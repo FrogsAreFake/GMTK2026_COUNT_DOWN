@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://4rcyfa1oanuy"]
+
+[ext_resource type="PackedScene" uid="uid://cameegx6ykle0" path="res://scenes/core/camera.tscn" id="1_b6u03"]
+[ext_resource type="PackedScene" uid="uid://dnktfwakkfxyt" path="res://scenes/entities/spawner/feather_spawner.tscn" id="2_ebys2"]
+[ext_resource type="PackedScene" uid="uid://dpj54poi5b04c" path="res://scenes/player/duck.tscn" id="3_jvmw0"]
+[ext_resource type="PackedScene" uid="uid://drvy231vm8m2n" path="res://scenes/player/pillow.tscn" id="4_44pk5"]
+
+[node name="Main" type="Node3D" unique_id=481238041]
+
+[node name="Feathers" type="Node3D" parent="." unique_id=1500000000]
+
+[node name="Camera" parent="." unique_id=1476282451 instance=ExtResource("1_b6u03")]
+
+[node name="featherSpawner" parent="." unique_id=1024508386 instance=ExtResource("2_ebys2")]
+
+[node name="Duck" parent="." unique_id=230402468 instance=ExtResource("3_jvmw0")]
+
+[node name="Pillow" parent="Duck" unique_id=1767674676 instance=ExtResource("4_44pk5")]

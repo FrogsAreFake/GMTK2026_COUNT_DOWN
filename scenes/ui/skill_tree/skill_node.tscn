@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dw672p7jturda"]
+
+[ext_resource type="Script" uid="uid://b5pt72y74fojd" path="res://scripts/ui/skill_tree/skill_node.gd" id="1_node"]
+
+
+[node name="SkillNode" type="Button"]
+custom_minimum_size = Vector2(150, 54)
+offset_right = 150.0
+offset_bottom = 54.0
+text = "Skill"
+script = ExtResource("1_node")
