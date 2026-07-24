@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dpj54poi5b04c"]
+
+[ext_resource type="Script" uid="uid://bsbsnwili3aat" path="res://scripts/entities/player.gd" id="1_82oek"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_uwmw7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8sucs"]
+size = Vector3(1, 0.25, 1)
+
+[node name="Duck" type="Node3D" unique_id=230402468]
+script = ExtResource("1_82oek")
+
+[node name="DuckMesh" type="MeshInstance3D" parent="." unique_id=771042292]
+mesh = SubResource("BoxMesh_uwmw7")
+
+[node name="PillowMesh" type="MeshInstance3D" parent="." unique_id=716762035]
+
+[node name="PillowCollider" type="Area3D" parent="." unique_id=2107891368]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PillowCollider" unique_id=1719107722]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5036286, 0)
+shape = SubResource("BoxShape3D_8sucs")

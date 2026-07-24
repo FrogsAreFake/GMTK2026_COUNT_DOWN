@@ -1,16 +1,35 @@
 [gd_scene format=3 uid="uid://6ermxnaqom4u"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ufobu"]
+[ext_resource type="Script" uid="uid://dj6v5heibyf2i" path="res://scripts/entities/feather.gd" id="1_emvro"]
+[ext_resource type="Texture2D" uid="uid://dhcwybhoxgwhe" path="res://icon.svg" id="2_43uug"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_ufobu"]
+[sub_resource type="SphereMesh" id="SphereMesh_uwmw7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l7sqv"]
+transparency = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uwmw7"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_uwmw7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8sucs"]
+albedo_texture = ExtResource("2_43uug")
 
 [node name="Feather" type="Node3D" unique_id=1270923217]
-physics_interpolation_mode = 1
+script = ExtResource("1_emvro")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=933013881]
+[node name="FeatherModel" type="MeshInstance3D" parent="." unique_id=105012850]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+mesh = SubResource("SphereMesh_uwmw7")
+surface_material_override/0 = SubResource("StandardMaterial3D_l7sqv")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=883326158]
-shape = SubResource("BoxShape3D_ufobu")
+[node name="Area3D" type="Area3D" parent="." unique_id=30989979]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=1302262030]
-mesh = SubResource("BoxMesh_ufobu")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=516086845]
+shape = SubResource("BoxShape3D_uwmw7")
+
+[node name="Shadow" type="MeshInstance3D" parent="." unique_id=227096836]
+transform = Transform3D(0.25, 0, 0, 0, -1.0927847e-08, 0.25, 0, -0.25, -1.0927847e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_uwmw7")
+surface_material_override/0 = SubResource("StandardMaterial3D_8sucs")

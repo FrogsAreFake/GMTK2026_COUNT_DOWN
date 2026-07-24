@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cnh7fx4w6niwx"]
+
+[ext_resource type="PackedScene" uid="uid://dpj54poi5b04c" path="res://scenes/player/player.tscn" id="1_mrngc"]
+[ext_resource type="PackedScene" uid="uid://dnktfwakkfxyt" path="res://scenes/entities/spawner/feather_spawner.tscn" id="1_rtqpg"]
+[ext_resource type="ArrayMesh" uid="uid://l51qn8i1h7ko" path="res://models/platform_Plane.res" id="2_73lw6"]
+[ext_resource type="PackedScene" uid="uid://6ermxnaqom4u" path="res://scenes/entities/feather/feather.tscn" id="2_l7sqv"]
+
+[node name="TestEnv" type="Node3D" unique_id=1771935373]
+
+[node name="featherSpawner" parent="." unique_id=1024508386 node_paths=PackedStringArray("feather_container") instance=ExtResource("1_rtqpg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+feather_scene = ExtResource("2_l7sqv")
+feather_container = NodePath("../Node3D")
+spawner_size = 8.0
+
+[node name="Duck" parent="." unique_id=230402468 instance=ExtResource("1_mrngc")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.04756546, 0, 0.14005494)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1752294732]
+transform = Transform3D(0.7071068, -0.5, 0.5, 0, 0.7071068, 0.70710677, -0.7071068, -0.5, 0.5, 2.9679158, 4.2136283, 2.6971295)
+projection = 1
+size = 5.887025
+near = 0.01
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1779900359]
+mesh = ExtResource("2_73lw6")
+
+[node name="AreaLight3D" type="AreaLight3D" parent="." unique_id=660537341]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.779937, 0)
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1586392015]
+
+[editable path="featherSpawner"]

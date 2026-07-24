@@ -1,7 +1,7 @@
 extends Area3D
 
 ## Scene instantiated for each spawned feather.
-@export var feather_scene: PackedScene = preload("res://scenes/entities/feather/feather.tscn")
+@export var feather_scene: PackedScene
 ## Node that spawned feathers are parented to. If left unset, the spawner uses
 ## the node in the "feather_container" group, falling back to its own parent.
 @export var feather_container: Node3D
@@ -9,6 +9,7 @@ extends Area3D
 @export var min_spawn_interval: float = 0.5
 ## Longest delay (seconds) between spawns.
 @export var max_spawn_interval: float = 2.0
+@export var spawner_size: float = 10.0
 
 @onready var spawner_shape: CollisionShape3D = $spawnerShape
 
@@ -17,15 +18,16 @@ var _spawn_timer: Timer
 
 func _ready() -> void:
 	if feather_container == null:
-		feather_container = get_tree().get_first_node_in_group("feather_container") as Node3D
-	if feather_container == null:
-		feather_container = get_parent() as Node3D
+		feather_container = get_parent().get_node("Feathers") as Node3D
 
 	_spawn_timer = Timer.new()
 	_spawn_timer.one_shot = true
 	_spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 	add_child(_spawn_timer)
 	_schedule_next_spawn()
+
+	spawner_shape.shape.size.x = spawner_size
+	spawner_shape.shape.size.z = spawner_size
 
 
 func _on_spawn_timer_timeout() -> void:
