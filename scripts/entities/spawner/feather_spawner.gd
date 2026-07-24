@@ -17,9 +17,7 @@ var _spawn_timer: Timer
 
 func _ready() -> void:
 	if feather_container == null:
-		feather_container = get_tree().get_first_node_in_group("feather_container") as Node3D
-	if feather_container == null:
-		feather_container = get_parent() as Node3D
+		feather_container = get_parent().get_node("Feathers") as Node3D
 
 	_spawn_timer = Timer.new()
 	_spawn_timer.one_shot = true
