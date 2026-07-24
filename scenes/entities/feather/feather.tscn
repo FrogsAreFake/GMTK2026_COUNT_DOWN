@@ -1,3 +1,16 @@
 [gd_scene format=3 uid="uid://6ermxnaqom4u"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ufobu"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ufobu"]
+
 [node name="Feather" type="Node3D" unique_id=1270923217]
+physics_interpolation_mode = 1
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=933013881]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=883326158]
+shape = SubResource("BoxShape3D_ufobu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=1302262030]
+mesh = SubResource("BoxMesh_ufobu")

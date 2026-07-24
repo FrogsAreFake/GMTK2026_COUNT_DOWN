@@ -7,33 +7,42 @@ extends Control
 @export var starting_points: int = 5
 
 var _skills: Array[SkillNode] = []
-var _selected: SkillNode = null
+var _hovered: SkillNode = null
 var _points: int = 0
+var _is_panning: bool = false
+var _pan_offset: Vector2 = Vector2.ZERO
+var _center_offset: Vector2 = Vector2.ZERO
+var _last_mouse_position: Vector2 = Vector2.ZERO
 
-@onready var _connections: SkillConnections = $Connections
+@onready var _tree_canvas: Control = $TreeCanvas
+@onready var _connections: SkillConnections = $TreeCanvas/Connections
 @onready var _points_label: Label = $HeaderPanel/HeaderMargin/PointsLabel
+@onready var _info_panel: PanelContainer = $InfoPanel
 @onready var _info_name: Label = $InfoPanel/InfoMargin/InfoBox/TextBox/SkillName
-@onready var _info_cost: Label = $InfoPanel/InfoMargin/InfoBox/TextBox/SkillCost
+@onready var _info_cost: Label = $InfoPanel/InfoMargin/InfoBox/SkillCost
 @onready var _info_desc: Label = $InfoPanel/InfoMargin/InfoBox/TextBox/SkillDescription
-@onready var _unlock_button: Button = $InfoPanel/InfoMargin/InfoBox/UnlockButton
 
 
 func _ready() -> void:
 	_points = starting_points
-	_collect_skills($SkillNodes)
+	_collect_skills($TreeCanvas/SkillNodes)
 	for s in _skills:
 		s.skill_selected.connect(_on_skill_selected)
+		s.mouse_entered.connect(_on_skill_mouse_entered.bind(s))
+		s.mouse_exited.connect(_on_skill_mouse_exited.bind(s))
 	for s in _skills:
 		if s.unlocked_from_start:
 			s.set_state(SkillNode.State.UNLOCKED)
-	_unlock_button.pressed.connect(_on_unlock_pressed)
+	_info_panel.visible = false
 	_refresh_states()
 	_update_points_label()
-	_show_info(null)
+	_hide_info()
 	# Wait one frame so containers have finished laying out before we read
 	# node centers to draw the connection lines.
 	await get_tree().process_frame
 	_connections.setup(_skills)
+	_recalculate_center_offset()
+	_apply_tree_position()
 
 
 func _collect_skills(root: Node) -> void:
@@ -43,23 +52,16 @@ func _collect_skills(root: Node) -> void:
 
 
 func _on_skill_selected(skill: SkillNode) -> void:
-	_selected = skill
-	skill.grab_focus()
-	_show_info(skill)
-
-
-func _on_unlock_pressed() -> void:
-	if _selected == null:
+	if skill.state != SkillNode.State.AVAILABLE:
 		return
-	if _selected.state != SkillNode.State.AVAILABLE:
+	if _points < skill.cost:
 		return
-	if _points < _selected.cost:
-		return
-	_points -= _selected.cost
-	_selected.set_state(SkillNode.State.UNLOCKED)
+	_points -= skill.cost
+	skill.set_state(SkillNode.State.UNLOCKED)
 	_refresh_states()
 	_update_points_label()
-	_show_info(_selected)
+	if _hovered == skill:
+		_show_info(skill)
 
 
 ## Recompute LOCKED / AVAILABLE state for every skill that is not yet unlocked.
@@ -90,25 +92,81 @@ func _update_points_label() -> void:
 
 func _show_info(skill: SkillNode) -> void:
 	if skill == null:
-		_info_name.text = "Select a skill"
+		_info_name.text = ""
 		_info_cost.text = ""
-		_info_desc.text = "Click an available skill node to see details and unlock it."
-		_unlock_button.disabled = true
-		_unlock_button.text = "Unlock"
+		_info_desc.text = ""
 		return
 
+	_info_panel.visible = true
 	_info_name.text = skill.skill_name
 	_info_cost.text = "Cost: %d point(s)" % skill.cost
 	_info_desc.text = skill.description
 
-	match skill.state:
-		SkillNode.State.UNLOCKED:
-			_unlock_button.disabled = true
-			_unlock_button.text = "Unlocked"
-		SkillNode.State.AVAILABLE:
-			var affordable := _points >= skill.cost
-			_unlock_button.disabled = not affordable
-			_unlock_button.text = "Unlock" if affordable else "Not enough points"
-		SkillNode.State.LOCKED:
-			_unlock_button.disabled = true
-			_unlock_button.text = "Locked"
+
+func _hide_info() -> void:
+	_show_info(null)
+	_info_panel.visible = false
+
+
+func _on_skill_mouse_entered(skill: SkillNode) -> void:
+	_hovered = skill
+	_show_info(skill)
+
+
+func _on_skill_mouse_exited(skill: SkillNode) -> void:
+	if _hovered != skill:
+		return
+	_hovered = null
+	_hide_info()
+
+
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		var mb := event as InputEventMouseButton
+		if mb.button_index == MOUSE_BUTTON_LEFT:
+			if mb.pressed:
+				if _is_pointer_over_skill(mb.position):
+					return
+				_is_panning = true
+				_last_mouse_position = mb.position
+				accept_event()
+			else:
+				_is_panning = false
+	if event is InputEventMouseMotion and _is_panning:
+		var mm := event as InputEventMouseMotion
+		_pan_offset += mm.position - _last_mouse_position
+		_last_mouse_position = mm.position
+		_apply_tree_position()
+		accept_event()
+
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_RESIZED:
+		_recalculate_center_offset()
+		_apply_tree_position()
+
+
+func _recalculate_center_offset() -> void:
+	if _skills.is_empty():
+		_center_offset = Vector2.ZERO
+		return
+	var min_pos := Vector2(INF, INF)
+	var max_pos := Vector2(-INF, -INF)
+	for skill in _skills:
+		min_pos = min_pos.min(skill.position)
+		max_pos = max_pos.max(skill.position + skill.size)
+	var skills_center := (min_pos + max_pos) * 0.5
+	_center_offset = size * 0.5 - skills_center
+
+
+func _apply_tree_position() -> void:
+	if _tree_canvas != null:
+		_tree_canvas.position = _center_offset + _pan_offset
+
+
+func _is_pointer_over_skill(pointer_position: Vector2) -> bool:
+	var pointer_global := get_global_transform() * pointer_position
+	for skill in _skills:
+		if skill.get_global_rect().has_point(pointer_global):
+			return true
+	return false
