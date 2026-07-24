@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cameegx6ykle0" path="res://scenes/core/camera.tscn" id="1_b6u03"]
 [ext_resource type="PackedScene" uid="uid://dnktfwakkfxyt" path="res://scenes/entities/spawner/feather_spawner.tscn" id="2_ebys2"]
-[ext_resource type="PackedScene" uid="uid://dpj54poi5b04c" path="res://scenes/player/duck.tscn" id="3_jvmw0"]
+[ext_resource type="PackedScene" uid="uid://dpj54poi5b04c" path="res://scenes/player/player.tscn" id="3_jvmw0"]
 [ext_resource type="PackedScene" uid="uid://drvy231vm8m2n" path="res://scenes/player/pillow.tscn" id="4_44pk5"]
 [ext_resource type="PackedScene" uid="uid://bg2xu48yrtbob" path="res://scenes/environment/test_level.tscn" id="5_ebys2"]
 [ext_resource type="PackedScene" uid="uid://dw672p7jt1uea" path="res://scenes/ui/skill_tree/skill_tree.tscn" id="6_jvmw0"]
