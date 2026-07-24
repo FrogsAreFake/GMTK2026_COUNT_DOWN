@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://cxjj1acdigr8a"]
+
+[ext_resource type="Script" uid="uid://cvgoo4ktiq1wd" path="res://scripts/ui/skill_tree/connection_lines.gd" id="1_51uma"]
+[ext_resource type="Script" uid="uid://diaerj8wimt8f" path="res://scripts/ui/skill_tree/skill_tree_view.gd" id="1_l65xs"]
+[ext_resource type="PackedScene" uid="uid://teorn8oay2s1" path="res://scenes/ui/skill_tree/skill_node.tscn" id="2_f6ea4"]
+[ext_resource type="PackedScene" uid="uid://dy1jukxeh1lc6" path="res://scenes/ui/skill_tree/skill_tool_tip.tscn" id="2_l65xs"]
+[ext_resource type="Script" uid="uid://rw8b0sk0q1q8" path="res://scripts/ui/skill_tree/skill_data.gd" id="3_nbo01"]
+[ext_resource type="Resource" uid="uid://oj6mwf85l03u" path="res://resources/upgrades/leafblower.tres" id="4_2nuj6"]
+[ext_resource type="Resource" uid="uid://bm40n5w8hbkkn" path="res://resources/upgrades/dash.tres" id="5_t4lsn"]
+[ext_resource type="Resource" uid="uid://bn3e7jl55bjfp" path="res://resources/upgrades/discount.tres" id="6_2q888"]
+[ext_resource type="Resource" uid="uid://cg44isxwfm701" path="res://resources/upgrades/firmer_pillows.tres" id="7_gtuid"]
+[ext_resource type="Resource" uid="uid://cc52x2iu3jst3" path="res://resources/upgrades/overtime.tres" id="9_grhs0"]
+[ext_resource type="Resource" uid="uid://bug64qcnslcib" path="res://resources/upgrades/speed.tres" id="10_up43e"]
+
+[node name="SkillTreeView" type="Control" unique_id=994003186]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l65xs")
+skill_node_scene = ExtResource("2_f6ea4")
+skills = Array[ExtResource("3_nbo01")]([ExtResource("4_2nuj6"), ExtResource("5_t4lsn"), ExtResource("6_2q888"), ExtResource("7_gtuid"), ExtResource("9_grhs0"), ExtResource("10_up43e")])
+min_zoom = 0.1
+max_zoom = 5.0
+
+[node name="World" type="Control" parent="." unique_id=1423430197]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ConnectionLines" type="Control" parent="World" unique_id=1728152915]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("1_51uma")
+
+[node name="Tooltip" parent="." unique_id=2054067215 instance=ExtResource("2_l65xs")]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -59.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0

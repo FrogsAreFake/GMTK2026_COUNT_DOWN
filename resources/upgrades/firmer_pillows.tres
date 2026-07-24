@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SkillData" format=3 uid="uid://cg44isxwfm701"]
+
+[ext_resource type="Script" uid="uid://rw8b0sk0q1q8" path="res://scripts/ui/skill_tree/skill_data.gd" id="1_anvyp"]
+[ext_resource type="Texture2D" uid="uid://for71u2bq6ig" path="res://assets/ui/icons/skills/density.png" id="1_vdyuo"]
+
+[resource]
+script = ExtResource("1_anvyp")
+icon = ExtResource("1_vdyuo")
+metadata/_custom_type_script = "uid://rw8b0sk0q1q8"

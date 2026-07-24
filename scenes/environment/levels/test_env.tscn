@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://dpj54poi5b04c" path="res://scenes/player/player.tscn" id="1_mrngc"]
 [ext_resource type="PackedScene" uid="uid://dnktfwakkfxyt" path="res://scenes/entities/spawner/feather_spawner.tscn" id="1_rtqpg"]
-[ext_resource type="ArrayMesh" uid="uid://l51qn8i1h7ko" path="res://models/platform_Plane.res" id="2_73lw6"]
-[ext_resource type="PackedScene" uid="uid://6ermxnaqom4u" path="res://scenes/entities/feather/feather.tscn" id="2_l7sqv"]
+[ext_resource type="ArrayMesh" uid="uid://biepnd3yxgixm" path="res://models/platform_Plane.res" id="2_73lw6"]
+[ext_resource type="PackedScene" uid="uid://6ermxnaqom4u" path="res://scenes/entities/feathers/feather.tscn" id="2_l7sqv"]
 
 [node name="TestEnv" type="Node3D" unique_id=1771935373]
 

@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameManager="*uid://sv2ry40bhum1"
+SkillTreeManager="*uid://bwailyn6lu1qu"
+SkillTreePanState="*uid://1c085u4pphj1"
 
 [display]
 

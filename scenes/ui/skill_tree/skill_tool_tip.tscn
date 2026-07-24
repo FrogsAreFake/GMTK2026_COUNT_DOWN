@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dy1jukxeh1lc6"]
+
+[ext_resource type="Script" uid="uid://b48wldlyxhaga" path="res://scripts/ui/skill_tree/skill_tooltip.gd" id="1_qsf5q"]
+
+[node name="SkillToolTip" type="PanelContainer" unique_id=2054067215]
+offset_right = 1.0
+offset_bottom = 59.0
+mouse_filter = 2
+script = ExtResource("1_qsf5q")
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=594674642]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="VBox" type="VBoxContainer" parent="Margin" unique_id=1707894159]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Title" type="Label" parent="Margin/VBox" unique_id=800008203]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="Margin/VBox" unique_id=2077300069]
+custom_minimum_size = Vector2(0.1, 0)
+layout_mode = 2
+autowrap_mode = 3
+
+[node name="Status" type="Label" parent="Margin/VBox" unique_id=796718085]
+layout_mode = 2

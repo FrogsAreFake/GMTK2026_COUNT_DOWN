@@ -1,0 +1,10 @@
+[gd_resource type="Theme" format=3 uid="uid://b7m3ugtm43pqr"]
+
+[ext_resource type="FontFile" uid="uid://b7duricfreq1j" path="res://assets/fonts/Jacquard24-Regular.ttf" id="1_tvm5x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tvm5x"]
+
+[resource]
+default_font = ExtResource("1_tvm5x")
+default_font_size = 20
+Panel/styles/panel = SubResource("StyleBoxFlat_tvm5x")
