@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wa5n71b3qhcy"
-path="res://.godot/imported/feather_1.png-ab5cc4755f150beb2b227f240a613e4d.ctex"
+uid="uid://oaii1otludwt"
+path="res://.godot/imported/feather_4.png-469596f806abfaea8723e6bdb6a9055d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/feather_1.png"
-dest_files=["res://.godot/imported/feather_1.png-ab5cc4755f150beb2b227f240a613e4d.ctex"]
+source_file="res://assets/textures/feather_4.png"
+dest_files=["res://.godot/imported/feather_4.png-469596f806abfaea8723e6bdb6a9055d.ctex"]
 
 [params]
 

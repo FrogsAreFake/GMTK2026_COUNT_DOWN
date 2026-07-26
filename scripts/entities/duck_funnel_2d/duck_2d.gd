@@ -2,7 +2,8 @@ extends Node2D
 
 ## Duck that walks in from the left, joins the line, stops under the funnel
 ## when it's its turn, gets fed feathers into its pillowcase, then walks
-## away once full (or after waiting too long with no feathers available).
+## away once full. Waits indefinitely under the funnel if no feathers are
+## available (the shop runs continuously, so feathers eventually arrive).
 
 signal pillowcase_filled(duck: Node2D)
 signal left_scene(duck: Node2D)
@@ -11,9 +12,6 @@ signal left_scene(duck: Node2D)
 @export var speed: float = 60.0
 @export var min_spacing: float = 72.0
 @export var pillowcase_capacity: int = 5
-## Safety valve: if a duck goes this long without catching another feather
-## under the funnel (e.g. feathers ran out), it leaves anyway.
-@export var wait_timeout: float = 10.0
 @export var despawn_x: float = 1400.0
 
 ## Set by the spawner right after instantiation.
@@ -24,7 +22,6 @@ var funnel: Node = null
 enum State { WALKING, WAITING, LEAVING }
 var state: State = State.WALKING
 var feathers_collected: int = 0
-var _wait_time: float = 0.0
 
 @onready var catcher: Area2D = $Catcher
 @onready var pillowcase_collider: Area2D = $PillowcaseCollider
@@ -70,8 +67,7 @@ func _process_walking(delta: float) -> void:
 func _process_waiting(delta: float) -> void:
 	for body in catcher.get_overlapping_bodies():
 		_try_collect_feather(body)
-	_wait_time += delta
-	if feathers_collected >= pillowcase_capacity or _wait_time >= wait_timeout:
+	if feathers_collected >= pillowcase_capacity:
 		_leave()
 
 
@@ -84,7 +80,6 @@ func _process_leaving(delta: float) -> void:
 
 func _start_waiting() -> void:
 	state = State.WAITING
-	_wait_time = 0.0
 	if funnel:
 		funnel.request_feed(self)
 
@@ -110,7 +105,6 @@ func _try_collect_feather(body: Node) -> void:
 		return
 
 	feathers_collected += 1
-	_wait_time = 0.0
 	body.queue_free()
 	if feathers_collected >= pillowcase_capacity:
 		pillowcase_filled.emit(self)

@@ -19,6 +19,7 @@ class_name SkillTreeView
 @export var min_zoom: float = 0.5
 @export var max_zoom: float = 1.5
 @export var zoom_step: float = 0.1
+@export var initial_zoom: float = 0.6
 
 @onready var world: Control = $World
 @onready var connections: ConnectionLines = $World/ConnectionLines
@@ -35,6 +36,8 @@ func _ready() -> void:
 	_update_points_label()
 	_build_tree()
 	_center_view()
+	_zoom = clamp(initial_zoom, min_zoom, max_zoom)
+	world.scale = Vector2.ONE * _zoom
 
 func _build_tree() -> void:
 	for skill in skills:

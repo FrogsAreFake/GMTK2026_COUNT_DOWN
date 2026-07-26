@@ -8,6 +8,8 @@ extends Node2D
 @export var duck_scene: PackedScene
 @export var min_spawn_interval: float = 2.0
 @export var max_spawn_interval: float = 3.5
+## Money earned each time a duck's pillowcase is filled and sold.
+@export var money_per_pillow: int = 20
 ## Node the spawned ducks are parented to. Falls back to this spawner's
 ## parent if left unset.
 @export var duck_container_path: NodePath
@@ -58,5 +60,11 @@ func _spawn() -> void:
 	duck.funnel = funnel
 	if duck_stop_marker:
 		duck.stop_x = duck_stop_marker.global_position.x
+	duck.pillowcase_filled.connect(_on_pillowcase_filled)
 
 	_last_duck = duck
+
+
+## A duck's pillowcase reached capacity — sell the pillow for money.
+func _on_pillowcase_filled(_duck: Node2D) -> void:
+	GameManager.add_money(money_per_pillow)

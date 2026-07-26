@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dj5d45ucw4bg4"]
 
 [ext_resource type="Script" uid="uid://c212pmjjnhkvm" path="res://scripts/entities/feathers/feather_1.gd" id="1_yehwr"]
-[ext_resource type="ArrayMesh" uid="uid://cuc1brn0albom" path="res://models/blender/Feather_Plane.res" id="2_kp6if"]
-[ext_resource type="Texture2D" uid="uid://dkkjwu6ogheuh" path="res://textures/feather_0.png" id="3_wi17b"]
+[ext_resource type="ArrayMesh" uid="uid://b6dnetib0kd44" path="res://assets/models/blender/Feather_Plane.res" id="2_kp6if"]
+[ext_resource type="Texture2D" uid="uid://dkkjwu6ogheuh" path="res://assets/textures/feather_0.png" id="3_wi17b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_osls0"]
 transparency = 1

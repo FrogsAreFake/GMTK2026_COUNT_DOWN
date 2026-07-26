@@ -47,5 +47,5 @@ func _process(delta: float) -> void:
 # Checking if feather is caught by the pillow
 func _on_area_entered(area: Area3D):
 	if(area.name == "PillowCollider" && self.active == true):
-		print("Entered trigger!")
+		GameManager.catch_feather()
 		queue_free()

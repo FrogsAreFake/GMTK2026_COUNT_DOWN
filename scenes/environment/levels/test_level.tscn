@@ -1,10 +1,6 @@
 [gd_scene format=3 uid="uid://bg2xu48yrtbob"]
 
-[ext_resource type="Texture2D" uid="uid://ccqmlm4powpas" path="res://assets/textures/grass.png" id="1_vw7bf"]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fo1ic"]
-albedo_texture = ExtResource("1_vw7bf")
-albedo_texture_force_srgb = true
 uv1_scale = Vector3(0.2, 0.2, 0.2)
 uv1_triplanar = true
 

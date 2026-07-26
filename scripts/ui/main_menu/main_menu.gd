@@ -3,7 +3,7 @@ extends Control
 ## Entry title screen shown when the game launches.
 ## The "Play" button starts the game by loading the gameplay scene.
 
-const GAMEPLAY_SCENE := "res://scenes/environment/levels/test_env.tscn"
+const GAMEPLAY_SCENE := "res://scenes/core/main.tscn"
 
 @onready var play_button: Button = %PlayButton
 

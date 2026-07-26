@@ -7,7 +7,7 @@ extends Feather
 @export var min_speed: float = 0.001
 @export var max_speed: float = 0.001
 
-@onready var player = get_node("/root/TestEnv/Player")
+@onready var player = get_tree().get_first_node_in_group("player")
 
 var speed = min_speed
 var x = 0.0
@@ -34,7 +34,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	super(delta)
 
-	if(active == true):
+	if(active == true && player != null):
 		direction = self.position - player.position
 		direction.y = 0
 		direction = direction.normalized()

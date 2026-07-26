@@ -1,7 +1,10 @@
 extends Node
 
 @export var mouse_sensitivity = 0.005
-@export var speed = 0.01
+## Base movement responsiveness before the Speed skill's bonus is applied.
+@export var base_speed = 0.01
+## Added to base_speed for every level of the Speed skill (id "0") purchased.
+@export var speed_bonus_per_level = 0.003
 @export var bounds_size = 2
 
 var mouse_pos_zero = Vector2(0, 0)
@@ -9,11 +12,14 @@ var offset = Vector2(0, 0)
 var player_start_pos = Vector3(0, 0, 0)
 var mouse_held = false
 var bound_offset = 0.5
+var speed = 0.01
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	add_to_group("player")
 	# Set the player radius based on the scale (mesh should be radius 1)
 	bound_offset = self.scale.x / 2
+	speed = base_speed + SkillTreeManager.get_level("0") * speed_bonus_per_level
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dnx524ug7l027"
-path="res://.godot/imported/Feather.glb-9c68399cad41087d4cd1a6341eafea95.scn"
+uid="uid://cxy31ka074it6"
+path="res://.godot/imported/platform.glb-2ff4efeee44e5815462200f231a7ce0f.scn"
 
 [deps]
 
-source_file="res://models/blender/Feather.glb"
-dest_files=["res://.godot/imported/Feather.glb-9c68399cad41087d4cd1a6341eafea95.scn"]
+source_file="res://assets/models/platform.glb"
+dest_files=["res://.godot/imported/platform.glb-2ff4efeee44e5815462200f231a7ce0f.scn"]
 
 [params]
 
@@ -41,14 +41,14 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "meshes": {
-"Feather_Plane": {
+"platform_Plane": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://models/blender/Feather_Plane.res",
-"save_to_file/path": "uid://b6dnetib0kd44"
+"save_to_file/fallback_path": "res://assets/models/platform_Plane.res",
+"save_to_file/path": "uid://biepnd3yxgixm"
 }
 }
 }

@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://b1ion1mnivsvi"
-path="res://.godot/imported/footslap_2.wav-9d4a3a1ffca3d05b2774e123ad5b6b26.sample"
+uid="uid://c72m0l6o30tkq"
+path="res://.godot/imported/button_pop.wav-9e2eb1910c87162cdb6e0af22f07a66b.sample"
 
 [deps]
 
-source_file="res://audio/footslap_2.wav"
-dest_files=["res://.godot/imported/footslap_2.wav-9d4a3a1ffca3d05b2774e123ad5b6b26.sample"]
+source_file="res://assets/audio/button_pop.wav"
+dest_files=["res://.godot/imported/button_pop.wav-9e2eb1910c87162cdb6e0af22f07a66b.sample"]
 
 [params]
 

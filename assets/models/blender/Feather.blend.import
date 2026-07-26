@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ciibcdyws67gg"
-path="res://.godot/imported/Feather.blend-fffcfc70f2f6cccb12fc77b971440f00.scn"
+path="res://.godot/imported/Feather.blend-775dd185f04f2309f1e4c8b9d0df08c4.scn"
 
 [deps]
 
-source_file="res://models/blender/Feather.blend"
-dest_files=["res://.godot/imported/Feather.blend-fffcfc70f2f6cccb12fc77b971440f00.scn"]
+source_file="res://assets/models/blender/Feather.blend"
+dest_files=["res://.godot/imported/Feather.blend-775dd185f04f2309f1e4c8b9d0df08c4.scn"]
 
 [params]
 
