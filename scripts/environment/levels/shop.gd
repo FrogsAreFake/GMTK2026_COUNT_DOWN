@@ -65,13 +65,16 @@ func _on_feathers_caught_changed(_new_amount: int) -> void:
 
 
 func _on_upgrades_pressed() -> void:
+	SoundManager.play_button_pop()
 	upgrades_popup.show()
 
 
 func _on_close_pressed() -> void:
+	SoundManager.play_button_pop()
 	upgrades_popup.hide()
 
 
 func _on_play_again_pressed() -> void:
+	SoundManager.play_button_pop()
 	close()
 	GameManager.start_new_run()
