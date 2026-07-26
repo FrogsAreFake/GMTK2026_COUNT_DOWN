@@ -14,7 +14,7 @@ size = Vector3(1.0200195, 0.20855713, 1.9895325)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r22x5"]
 transparency = 1
-albedo_color = Color(0, 0, 0, 1)
+albedo_color = Color(0, 0, 0, 0.3137255)
 albedo_texture = ExtResource("3_ebsqe")
 texture_filter = 0
 

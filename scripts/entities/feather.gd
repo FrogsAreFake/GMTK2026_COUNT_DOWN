@@ -16,26 +16,29 @@ class_name Feather
 @onready var mesh = $FeatherModel
 
 
+# var material = StandardMaterial3D.new()
 var material = StandardMaterial3D.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Setup for collision detection
 	$Area3D.area_entered.connect(_on_area_entered)
+	material = mesh.get_surface_override_material(0).duplicate()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if(active == true && self.position.y <= 0): # Feather missed, it touched the ground
+	if(active == true && self.position.y <= 0.1): # Feather missed, it touched the ground
 		active = false
 
 		# tmp to tell that a feather is no longer active
-		material.albedo_color = Color.RED
+		# material.albedo_color = Color.RED
 		mesh.set_surface_override_material(0, material)
 		material.transparency = true;
 
 	# When feather is no longer active, start fading intro transparency and eventually disappear
 	if(active == false):
+		shadow.visible = false
 		material.albedo_color.a -= fade_speed
 		if(material.albedo_color.a < 0):
 			queue_free()

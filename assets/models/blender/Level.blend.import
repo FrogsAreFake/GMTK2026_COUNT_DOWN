@@ -45,6 +45,11 @@ _subresources={
 "use_external/enabled": true,
 "use_external/fallback_path": "res://assets/models/blender/Level/tree_material.tres",
 "use_external/path": "uid://bo3i667v4isti"
+},
+"Material.006": {
+"use_external/enabled": false,
+"use_external/fallback_path": "res://assets/models/blender/Level/tree_material.tres",
+"use_external/path": "uid://bo3i667v4isti"
 }
 },
 "meshes": {
@@ -68,19 +73,22 @@ _subresources={
 }
 },
 "nodes": {
-"PATH:BézierCurve5": {
+"PATH:BézierCurve13": {
 "import/skip_import": true
 },
-"PATH:Cylinder5": {
+"PATH:Cylinder13": {
 "import/skip_import": true
 },
-"PATH:Leaves6": {
+"PATH:Icosphere": {
 "import/skip_import": true
 },
-"PATH:Leaves_0015": {
+"PATH:Leaves15": {
 "import/skip_import": true
 },
-"PATH:Trunk6": {
+"PATH:Leaves_00113": {
+"import/skip_import": true
+},
+"PATH:Trunk15": {
 "import/skip_import": true
 }
 }

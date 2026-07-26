@@ -7,18 +7,18 @@
 [ext_resource type="Script" uid="uid://qk5rxxlasw30" path="res://scripts/core/main.gd" id="6_main"]
 [ext_resource type="ArrayMesh" uid="uid://djpndvrj3ix0v" path="res://level_plane.tres" id="8_phv0v"]
 [ext_resource type="Theme" uid="uid://b7m3ugtm43pqr" path="res://assets/ui/theme/game_theme.tres" id="8_theme"]
-[ext_resource type="PackedScene" uid="uid://1pmevcece5ow" path="res://assets/models/blender/Level.blend" id="9_jpx65"]
 [ext_resource type="Texture2D" uid="uid://c3hxdfp5pmyv7" path="res://assets/textures/feather_5.png" id="9_feather0icon"]
+[ext_resource type="PackedScene" uid="uid://1pmevcece5ow" path="res://assets/models/blender/Level.blend" id="9_jpx65"]
 [ext_resource type="Texture2D" uid="uid://dkkjwu6ogheuh" path="res://assets/textures/feather_0.png" id="10_feather1icon"]
 [ext_resource type="Texture2D" uid="uid://c6pjqumuaddqi" path="res://assets/textures/feather_2.png" id="11_feather2icon"]
+
+[sub_resource type="Environment" id="Environment_uwmw7"]
+ambient_light_color = Color(1, 1, 1, 1)
 
 [node name="Main" type="Node3D" unique_id=481238041]
 script = ExtResource("6_main")
 
 [node name="Feathers" type="Node3D" parent="." unique_id=1500000000]
-
-[node name="Camera" type="Node3D" parent="." unique_id=1806169820]
-transform = Transform3D(0.70710677, -0.35355338, 0.6123724, 0, 0.8660254, 0.5, -0.70710677, -0.35355338, 0.6123724, 10, 10, 10)
 
 [node name="test" parent="." unique_id=2025671897 instance=ExtResource("5_ebys2")]
 visible = false
@@ -53,7 +53,6 @@ text = "5"
 horizontal_alignment = 1
 
 [node name="FeatherInfoPanel" type="PanelContainer" parent="HUD" unique_id=354833430]
-anchors_preset = 0
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 176.0
@@ -190,17 +189,21 @@ text = "Continue"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=234013718]
 transform = Transform3D(-0.48419702, -0.5022315, 0.7164613, -1.3555515e-08, 0.8188513, 0.5740057, -0.874959, 0.27793184, -0.39648536, 0, 25.942661, 0)
-light_color = Color(0.890399, 0.9407117, 1, 1)
+light_color = Color(0.8378033, 0.91325307, 0.9999997, 1)
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="DirectionalLight3D" unique_id=676223811]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4.9823967e-08, 2.737935, 1.9192629)
-light_color = Color(0.7618304, 0.8411923, 1, 1)
 light_energy = 0.5
+light_indirect_energy = 0.5
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1087223486]
-transform = Transform3D(0.7071068, -0.5, 0.5, 0, 0.7071068, 0.70710677, -0.7071068, -0.5, 0.5, 2.9617233, 6.0985293, 2.9728084)
+transform = Transform3D(0.7071068, -0.5, 0.5, 0, 0.7071068, 0.70710677, -0.7071068, -0.5, 0.5, 2.9617233, 5.459472, 2.9728084)
 projection = 1
-size = 7.0841966
+size = 6.3709025
 near = 0.01
 
 [node name="Player" parent="." unique_id=230402468 instance=ExtResource("3_jvmw0")]
@@ -221,5 +224,8 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 mesh = ExtResource("8_phv0v")
 
 [node name="Level" parent="." unique_id=245576356 instance=ExtResource("9_jpx65")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=828919578]
+environment = SubResource("Environment_uwmw7")
 
 [editable path="featherSpawner"]
