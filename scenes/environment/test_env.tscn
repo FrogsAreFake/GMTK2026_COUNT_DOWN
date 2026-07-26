@@ -1,10 +1,8 @@
-[gd_scene format=3 uid="uid://cnh7fx4w6niwx"]
+[gd_scene format=3 uid="uid://bcm832mbcsq7d"]
 
 [ext_resource type="PackedScene" uid="uid://dpj54poi5b04c" path="res://scenes/player/player.tscn" id="1_mrngc"]
 [ext_resource type="PackedScene" uid="uid://dnktfwakkfxyt" path="res://scenes/entities/spawner/feather_spawner.tscn" id="1_rtqpg"]
 [ext_resource type="PackedScene" uid="uid://begb4qt6vym8u" path="res://scenes/entities/feather/feather_0.tscn" id="2_l7sqv"]
-[ext_resource type="ArrayMesh" uid="uid://diy0gnhi10mj2" path="res://models/blender/Level/tree.tres" id="3_igcsn"]
-[ext_resource type="Material" uid="uid://bo3i667v4isti" path="res://models/blender/Level/tree_material.tres" id="4_c5h8l"]
 
 [node name="TestEnv" type="Node3D" unique_id=1771935373]
 
@@ -23,9 +21,7 @@ size = 5.887025
 near = 0.01
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1779900359]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 1.9970856, 0.53399646, -1.6481259)
-mesh = ExtResource("3_igcsn")
-surface_material_override/0 = ExtResource("4_c5h8l")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.197042, 0, -0.013585806)
 
 [node name="AreaLight3D" type="AreaLight3D" parent="." unique_id=660537341]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 4.3718624, 0)

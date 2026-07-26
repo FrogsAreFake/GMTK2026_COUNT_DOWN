@@ -3,17 +3,11 @@
 [ext_resource type="Script" uid="uid://bsbsnwili3aat" path="res://scripts/entities/player.gd" id="1_82oek"]
 [ext_resource type="PackedScene" uid="uid://cuaw7haeb41hw" path="res://assets/models/blender/Duck.blend" id="2_dovo2"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_uwmw7"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_8sucs"]
 size = Vector3(1, 0.25, 1)
 
 [node name="Player" type="Node3D" unique_id=230402468]
 script = ExtResource("1_82oek")
-
-[node name="DuckMesh" type="MeshInstance3D" parent="." unique_id=771042292]
-visible = false
-mesh = SubResource("BoxMesh_uwmw7")
 
 [node name="PillowMesh" type="MeshInstance3D" parent="." unique_id=716762035]
 
