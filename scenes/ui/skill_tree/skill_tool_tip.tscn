@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://dy1jukxeh1lc6"]
+
+[ext_resource type="Script" uid="uid://b48wldlyxhaga" path="res://scripts/ui/skill_tree/skill_tooltip.gd" id="1_qsf5q"]
+
+[node name="SkillToolTip" type="PanelContainer" unique_id=2054067215]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -176.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("1_qsf5q")
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=594674642]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 8
+
+[node name="HBox" type="HBoxContainer" parent="Margin" unique_id=1707894159]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 16
+
+[node name="IconContainer" type="AspectRatioContainer" parent="Margin/HBox" unique_id=-488616524]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Icon" type="TextureRect" parent="Margin/HBox/IconContainer" unique_id=-488616522]
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Info" type="VBoxContainer" parent="Margin/HBox" unique_id=1219009324]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Margin/HBox/Info" unique_id=800008203]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+
+[node name="Description" type="Label" parent="Margin/HBox/Info" unique_id=2077300069]
+modulate = Color(1, 1, 1, 0.6)
+custom_minimum_size = Vector2(0.01, 0)
+layout_mode = 2
+size_flags_vertical = 3
+autowrap_mode = 3
+
+[node name="Status" type="Label" parent="Margin/HBox/Info" unique_id=796718085]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+
+[node name="CostMargin" type="MarginContainer" parent="Margin/HBox" unique_id=-488616521]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_right = 24
+
+[node name="CostLabel" type="Label" parent="Margin/HBox/CostMargin" unique_id=-488616523]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 2
+vertical_alignment = 1

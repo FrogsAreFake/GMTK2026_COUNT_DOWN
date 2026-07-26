@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SkillData" format=3 uid="uid://oj6mwf85l03u"]
+
+[ext_resource type="Script" uid="uid://rw8b0sk0q1q8" path="res://scripts/ui/skill_tree/skill_data.gd" id="1_hmxnb"]
+[ext_resource type="Texture2D" uid="uid://uflqq4rp2bay" path="res://assets/ui/icons/skills/leafblower.png" id="1_s1nwx"]
+
+[resource]
+script = ExtResource("1_hmxnb")
+id = "2"
+display_name = "Leaf Blower"
+description = "Blows feathers into your pillowcases"
+icon = ExtResource("1_s1nwx")
+grid_position = Vector2i(1, 0)
+metadata/_custom_type_script = "uid://rw8b0sk0q1q8"

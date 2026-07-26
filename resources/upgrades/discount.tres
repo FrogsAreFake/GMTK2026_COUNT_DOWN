@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SkillData" format=3 uid="uid://bn3e7jl55bjfp"]
+
+[ext_resource type="Script" uid="uid://rw8b0sk0q1q8" path="res://scripts/ui/skill_tree/skill_data.gd" id="1_3055t"]
+[ext_resource type="Texture2D" uid="uid://d71862taqdum" path="res://assets/ui/icons/skills/discount.png" id="2_dscnt"]
+
+[resource]
+script = ExtResource("1_3055t")
+id = "3"
+display_name = "Discount"
+description = "Skills cost less to unlock."
+icon = ExtResource("2_dscnt")
+grid_position = Vector2i(-1, 0)
+prerequisite_ids = Array[String](["0"])
+metadata/_custom_type_script = "uid://rw8b0sk0q1q8"
