@@ -8,6 +8,9 @@
 [ext_resource type="ArrayMesh" uid="uid://djpndvrj3ix0v" path="res://level_plane.tres" id="8_phv0v"]
 [ext_resource type="Theme" uid="uid://b7m3ugtm43pqr" path="res://assets/ui/theme/game_theme.tres" id="8_theme"]
 [ext_resource type="PackedScene" uid="uid://1pmevcece5ow" path="res://assets/models/blender/Level.blend" id="9_jpx65"]
+[ext_resource type="Texture2D" uid="uid://c3hxdfp5pmyv7" path="res://assets/textures/feather_5.png" id="9_feather0icon"]
+[ext_resource type="Texture2D" uid="uid://dkkjwu6ogheuh" path="res://assets/textures/feather_0.png" id="10_feather1icon"]
+[ext_resource type="Texture2D" uid="uid://c6pjqumuaddqi" path="res://assets/textures/feather_2.png" id="11_feather2icon"]
 
 [node name="Main" type="Node3D" unique_id=481238041]
 script = ExtResource("6_main")
@@ -24,19 +27,103 @@ visible = false
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=214153635]
 
-[node name="TimerLabel" type="Label" parent="HUD" unique_id=354833424]
+[node name="TimerPanel" type="PanelContainer" parent="HUD" unique_id=354833423]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -180.0
+offset_left = -80.0
 offset_top = 16.0
 offset_right = -16.0
-offset_bottom = 80.0
+offset_bottom = 84.0
 grow_horizontal = 0
+theme = ExtResource("8_theme")
+
+[node name="TimerMargin" type="MarginContainer" parent="HUD/TimerPanel" unique_id=354833425]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 4
+
+[node name="TimerLabel" type="Label" parent="HUD/TimerPanel/TimerMargin" unique_id=354833424]
+layout_mode = 2
 theme = ExtResource("8_theme")
 theme_override_font_sizes/font_size = 48
 text = "5"
-horizontal_alignment = 2
+horizontal_alignment = 1
+
+[node name="FeatherInfoPanel" type="PanelContainer" parent="HUD" unique_id=354833430]
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 176.0
+offset_bottom = 128.0
+theme = ExtResource("8_theme")
+
+[node name="FeatherInfoMargin" type="MarginContainer" parent="HUD/FeatherInfoPanel" unique_id=354833431]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="FeatherInfoVBox" type="VBoxContainer" parent="HUD/FeatherInfoPanel/FeatherInfoMargin" unique_id=354833432]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Tier0Row" type="HBoxContainer" parent="HUD/FeatherInfoPanel/FeatherInfoMargin/FeatherInfoVBox" unique_id=354833433]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Icon" type="TextureRect" parent="HUD/FeatherInfoPanel/FeatherInfoMargin/FeatherInfoVBox/Tier0Row" unique_id=354833434]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("9_feather0icon")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Tier0CountLabel" type="Label" parent="HUD/FeatherInfoPanel/FeatherInfoMargin/FeatherInfoVBox/Tier0Row" unique_id=354833435]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 22
+text = "x0"
+
+[node name="Tier1Row" type="HBoxContainer" parent="HUD/FeatherInfoPanel/FeatherInfoMargin/FeatherInfoVBox" unique_id=354833436]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Icon" type="TextureRect" parent="HUD/FeatherInfoPanel/FeatherInfoMargin/FeatherInfoVBox/Tier1Row" unique_id=354833437]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("10_feather1icon")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Tier1CountLabel" type="Label" parent="HUD/FeatherInfoPanel/FeatherInfoMargin/FeatherInfoVBox/Tier1Row" unique_id=354833438]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 22
+text = "x0"
+
+[node name="Tier2Row" type="HBoxContainer" parent="HUD/FeatherInfoPanel/FeatherInfoMargin/FeatherInfoVBox" unique_id=354833439]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Icon" type="TextureRect" parent="HUD/FeatherInfoPanel/FeatherInfoMargin/FeatherInfoVBox/Tier2Row" unique_id=354833440]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("11_feather2icon")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Tier2CountLabel" type="Label" parent="HUD/FeatherInfoPanel/FeatherInfoMargin/FeatherInfoVBox/Tier2Row" unique_id=354833441]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 22
+text = "x0"
 
 [node name="ResultsPopup" type="Control" parent="HUD" unique_id=1893175133]
 layout_mode = 3

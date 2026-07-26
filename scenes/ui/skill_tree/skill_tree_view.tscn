@@ -5,8 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://teorn8oay2s1" path="res://scenes/ui/skill_tree/skill_node.tscn" id="2_f6ea4"]
 [ext_resource type="PackedScene" uid="uid://dy1jukxeh1lc6" path="res://scenes/ui/skill_tree/skill_tool_tip.tscn" id="2_l65xs"]
 [ext_resource type="Script" uid="uid://rw8b0sk0q1q8" path="res://scripts/ui/skill_tree/skill_data.gd" id="3_nbo01"]
-[ext_resource type="Resource" uid="uid://oj6mwf85l03u" path="res://resources/upgrades/leafblower.tres" id="4_2nuj6"]
-[ext_resource type="Resource" uid="uid://bm40n5w8hbkkn" path="res://resources/upgrades/dash.tres" id="5_t4lsn"]
+[ext_resource type="Resource" uid="uid://oj6mwf85l03u" path="res://resources/upgrades/level_up.tres" id="4_2nuj6"]
 [ext_resource type="Resource" uid="uid://bn3e7jl55bjfp" path="res://resources/upgrades/discount.tres" id="6_2q888"]
 [ext_resource type="Resource" uid="uid://cg44isxwfm701" path="res://resources/upgrades/firmer_pillows.tres" id="7_gtuid"]
 [ext_resource type="Resource" uid="uid://cc52x2iu3jst3" path="res://resources/upgrades/overtime.tres" id="9_grhs0"]
@@ -22,7 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l65xs")
 skill_node_scene = ExtResource("2_f6ea4")
-skills = Array[ExtResource("3_nbo01")]([ExtResource("4_2nuj6"), ExtResource("5_t4lsn"), ExtResource("6_2q888"), ExtResource("7_gtuid"), ExtResource("9_grhs0"), ExtResource("10_up43e")])
+skills = Array[ExtResource("3_nbo01")]([ExtResource("4_2nuj6"), ExtResource("6_2q888"), ExtResource("7_gtuid"), ExtResource("9_grhs0"), ExtResource("10_up43e")])
 min_zoom = 0.1
 max_zoom = 5.0
 

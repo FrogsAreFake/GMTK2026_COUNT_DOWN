@@ -3,6 +3,9 @@ extends Node
 class_name Feather
 
 @export_group("Gameplay Settings")
+## Which reward tier this feather belongs to (0=common, 1=uncommon, 2=rare).
+## Matches GameManager.FEATHER_TIER_* constants; set per feather_#.tscn scene.
+@export var tier: int = 0
 
 @export_group("Editor Settings")
 @export var fade_speed: float = 0.01
@@ -47,6 +50,6 @@ func _process(delta: float) -> void:
 # Checking if feather is caught by the pillow
 func _on_area_entered(area: Area3D):
 	if(area.name == "PillowCollider" && self.active == true):
-		GameManager.catch_feather()
+		GameManager.catch_feather(tier)
 		SoundManager.play_coin()
 		queue_free()

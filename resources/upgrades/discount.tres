@@ -11,4 +11,6 @@ description = "Skills cost less to unlock."
 icon = ExtResource("2_dscnt")
 grid_position = Vector2i(-1, 0)
 prerequisite_ids = Array[String](["0"])
+max_level = 3
+costs = Array[int]([100, 200, 350])
 metadata/_custom_type_script = "uid://rw8b0sk0q1q8"

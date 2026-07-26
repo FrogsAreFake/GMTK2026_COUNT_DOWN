@@ -22,15 +22,23 @@ func _ready() -> void:
 		feather_container = get_parent()
 
 
-## Spawns `n` feathers above the funnel.
-func spawn_feathers(n: int) -> void:
+## Spawns feathers above the funnel, using the counts caught per tier this
+## run (see GameManager.feathers_by_type) so the shop-dropped feathers use
+## the correct PNG per tier. `counts_by_tier` maps tier -> feather count.
+func spawn_feathers(counts_by_tier: Dictionary) -> void:
 	if feather_scene == null or feather_container == null:
 		return
 
-	for i in range(n):
-		var feather := feather_scene.instantiate() as Node2D
-		feather_container.add_child(feather)
-		feather.global_position = global_position + Vector2(
-			randf_range(-spawn_area_width * 0.5, spawn_area_width * 0.5),
-			-randf_range(0.0, spawn_height_variance) - i * vertical_spacing
-		)
+	var i := 0
+	for tier in counts_by_tier.keys():
+		var count: int = counts_by_tier[tier]
+		for _n in range(count):
+			var feather := feather_scene.instantiate() as Node2D
+			if feather.has_method("set_tier"):
+				feather.call("set_tier", tier)
+			feather_container.add_child(feather)
+			feather.global_position = global_position + Vector2(
+				randf_range(-spawn_area_width * 0.5, spawn_area_width * 0.5),
+				-randf_range(0.0, spawn_height_variance) - i * vertical_spacing
+			)
+			i += 1

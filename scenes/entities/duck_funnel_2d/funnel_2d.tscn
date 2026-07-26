@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://scripts/entities/duck_funnel_2d/funnel_2d.gd" id="1_script"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_left"]
-points = PackedVector2Array(-138, -81, -117, -81, -21, 67.5, -42, 67.5)
+points = PackedVector2Array(-91, -81, -70, -81, -21, 67.5, -42, 67.5)
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_right"]
-points = PackedVector2Array(117, -81, 138, -81, 42, 67.5, 21, 67.5)
+points = PackedVector2Array(70, -81, 91, -81, 42, 67.5, 21, 67.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gate"]
 size = Vector2(42, 15)
@@ -29,11 +29,11 @@ shape = SubResource("ConvexPolygonShape2D_right")
 
 [node name="Visual" type="Polygon2D" parent="."]
 color = Color(0.55, 0.55, 0.6, 1)
-polygon = PackedVector2Array(-138, -81, -117, -81, -21, 67.5, -42, 67.5)
+polygon = PackedVector2Array(-91, -81, -70, -81, -21, 67.5, -42, 67.5)
 
 [node name="VisualRight" type="Polygon2D" parent="."]
 color = Color(0.55, 0.55, 0.6, 1)
-polygon = PackedVector2Array(117, -81, 138, -81, 42, 67.5, 21, 67.5)
+polygon = PackedVector2Array(70, -81, 91, -81, 42, 67.5, 21, 67.5)
 
 [node name="Gate" type="StaticBody2D" parent="."]
 position = Vector2(0, 75)

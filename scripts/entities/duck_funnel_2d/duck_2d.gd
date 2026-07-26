@@ -5,7 +5,7 @@ extends Node2D
 ## away once full. Waits indefinitely under the funnel if no feathers are
 ## available (the shop runs continuously, so feathers eventually arrive).
 
-signal pillowcase_filled(duck: Node2D)
+signal pillowcase_filled(duck: Node2D, feathers_by_tier: Dictionary)
 signal left_scene(duck: Node2D)
 
 @export_group("Gameplay Settings")
@@ -13,6 +13,8 @@ signal left_scene(duck: Node2D)
 @export var min_spacing: float = 72.0
 @export var pillowcase_capacity: int = 5
 @export var despawn_x: float = 1400.0
+## Added to pillowcase_capacity per level of the Firmer Pillows skill (id "4") purchased.
+@export var capacity_bonus_per_level: int = 1
 
 ## Set by the spawner right after instantiation.
 var duck_ahead: Node2D = null
@@ -22,6 +24,9 @@ var funnel: Node = null
 enum State { WALKING, WAITING, LEAVING }
 var state: State = State.WALKING
 var feathers_collected: int = 0
+## Feathers collected into this pillowcase so far, keyed by tier (see
+## GameManager.FEATHER_TIER_*), used to compute the tiered sale bonus.
+var feathers_by_tier: Dictionary = {}
 
 @onready var catcher: Area2D = $Catcher
 @onready var pillowcase_collider: Area2D = $PillowcaseCollider
@@ -30,6 +35,7 @@ var feathers_collected: int = 0
 
 func _ready() -> void:
 	catcher.body_entered.connect(_on_catcher_body_entered)
+	pillowcase_capacity += SkillTreeManager.get_level("4") * capacity_bonus_per_level
 
 
 func _process(delta: float) -> void:
@@ -105,9 +111,11 @@ func _try_collect_feather(body: Node) -> void:
 		return
 
 	feathers_collected += 1
+	var tier: int = body.get("tier") if body.get("tier") != null else 0
+	feathers_by_tier[tier] = feathers_by_tier.get(tier, 0) + 1
 	body.queue_free()
 	if feathers_collected >= pillowcase_capacity:
-		pillowcase_filled.emit(self)
+		pillowcase_filled.emit(self, feathers_by_tier)
 		_leave()
 
 

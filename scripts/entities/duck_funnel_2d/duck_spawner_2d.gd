@@ -8,8 +8,13 @@ extends Node2D
 @export var duck_scene: PackedScene
 @export var min_spawn_interval: float = 2.0
 @export var max_spawn_interval: float = 3.5
-## Money earned each time a duck's pillowcase is filled and sold.
-@export var money_per_pillow: int = 20
+## Flat payout for every filled pillowcase, regardless of feather tiers.
+@export var flat_base_payout: int = 15
+## Extra money paid per feather of each tier in the pillowcase, on top of
+## flat_base_payout. Keyed by GameManager.FEATHER_TIER_* (0=common,
+## 1=uncommon, 2=rare). Rarer feathers are worth progressively more so
+## catching them during the run pays off in the shop.
+@export var tier_bonus_per_feather: Dictionary = {0: 0, 1: 4, 2: 10}
 ## Node the spawned ducks are parented to. Falls back to this spawner's
 ## parent if left unset.
 @export var duck_container_path: NodePath
@@ -65,6 +70,12 @@ func _spawn() -> void:
 	_last_duck = duck
 
 
-## A duck's pillowcase reached capacity — sell the pillow for money.
-func _on_pillowcase_filled(_duck: Node2D) -> void:
-	GameManager.add_money(money_per_pillow)
+## A duck's pillowcase reached capacity — sell the pillow for money. Payout
+## is a flat base amount plus a bonus for each higher-tier feather it holds.
+func _on_pillowcase_filled(_duck: Node2D, feathers_by_tier: Dictionary) -> void:
+	var payout := flat_base_payout
+	for tier in feathers_by_tier.keys():
+		var count: int = feathers_by_tier[tier]
+		var bonus: int = tier_bonus_per_feather.get(tier, 0)
+		payout += bonus * count
+	GameManager.add_money(payout)

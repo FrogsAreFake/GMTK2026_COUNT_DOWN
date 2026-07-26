@@ -7,12 +7,15 @@ extends Node3D
 ## reveals it as an overlay rather than changing scenes.
 
 @onready var round_timer: Timer = $RoundTimer
-@onready var timer_label: Label = $HUD/TimerLabel
+@onready var timer_label: Label = $HUD/TimerPanel/TimerMargin/TimerLabel
 @onready var results_popup: Control = $HUD/ResultsPopup
 @onready var feathers_label: Label = %FeathersLabel
 @onready var continue_button: Button = %ContinueButton
 @onready var feather_spawner: Node = $featherSpawner
 @onready var duck: Node = $Player
+@onready var tier0_count_label: Label = %Tier0CountLabel
+@onready var tier1_count_label: Label = %Tier1CountLabel
+@onready var tier2_count_label: Label = %Tier2CountLabel
 
 
 func _ready() -> void:
@@ -23,6 +26,8 @@ func _ready() -> void:
 	round_timer.timeout.connect(_on_round_timer_timeout)
 	round_timer.start()
 	_update_timer_label(round_timer.wait_time)
+	GameManager.feathers_by_type_changed.connect(_on_feathers_by_type_changed)
+	_update_feather_info_panel(GameManager.feathers_by_type)
 
 
 func _process(_delta: float) -> void:
@@ -32,6 +37,17 @@ func _process(_delta: float) -> void:
 
 func _update_timer_label(time_left: float) -> void:
 	timer_label.text = "%d" % ceili(time_left)
+
+
+## Refreshes the top-left "feathers caught this run" icon rows.
+func _update_feather_info_panel(counts: Dictionary) -> void:
+	tier0_count_label.text = "x%d" % counts.get(GameManager.FEATHER_TIER_COMMON, 0)
+	tier1_count_label.text = "x%d" % counts.get(GameManager.FEATHER_TIER_UNCOMMON, 0)
+	tier2_count_label.text = "x%d" % counts.get(GameManager.FEATHER_TIER_RARE, 0)
+
+
+func _on_feathers_by_type_changed(counts: Dictionary) -> void:
+	_update_feather_info_panel(counts)
 
 
 func _on_round_timer_timeout() -> void:

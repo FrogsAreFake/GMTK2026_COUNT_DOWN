@@ -6,8 +6,10 @@
 [resource]
 script = ExtResource("1_hmxnb")
 id = "2"
-display_name = "Leaf Blower"
-description = "Blows feathers into your pillowcases"
+display_name = "Level Up"
+description = "Unlocks new kinds of feathers to blow into your pillowcases."
 icon = ExtResource("1_s1nwx")
 grid_position = Vector2i(1, 0)
+max_level = 2
+costs = Array[int]([150, 300])
 metadata/_custom_type_script = "uid://rw8b0sk0q1q8"

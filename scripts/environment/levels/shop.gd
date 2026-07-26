@@ -38,7 +38,7 @@ func _ready() -> void:
 ## itself never stops (it runs whether or not this is visible) — only the
 ## feathers from this run are added at this point.
 func open() -> void:
-	initial_feather_spawner.spawn_feathers(GameManager.feathers_caught)
+	initial_feather_spawner.spawn_feathers(GameManager.feathers_by_type)
 	world.visible = true
 	ui.visible = true
 
