@@ -14,8 +14,11 @@ var mouse_held = false
 var bound_offset = 0.5
 var speed = 0.01
 
+var anim_player
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	anim_player = get_node("Duck").get_node("AnimationPlayer")
 	add_to_group("player")
 	# Set the player radius based on the scale (mesh should be radius 1)
 	bound_offset = self.scale.x / 2
@@ -25,6 +28,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if(Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)):
+		# get_node("Duck").get_node("AnimationPlayer").set_assigned_animation("DuckStep")
+		anim_player.play("DuckWalk")
 		if(!mouse_held): # Clicked
 			mouse_pos_zero = get_viewport().get_mouse_position();
 			mouse_held = true;
@@ -40,6 +45,7 @@ func _process(delta: float) -> void:
 		).rotated(Vector3.UP, deg_to_rad(45)) # Rotated cause we're isometric
 
 		var distance = self.global_position.distance_to(target)
+		anim_player.speed_scale = distance * 2
 		var direction = (target - self.global_position).normalized()
 		self.rotation.y = -Vector2(direction.x, direction.z).angle() + PI/2
 
@@ -56,3 +62,4 @@ func _process(delta: float) -> void:
 
 	else:
 		mouse_held = false;
+		get_node("Duck").get_node("AnimationPlayer").stop()

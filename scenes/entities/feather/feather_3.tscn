@@ -1,44 +1,39 @@
-[gd_scene format=3 uid="uid://ce7w0laxnv5dq"]
+[gd_scene format=3 uid="uid://byynnfk25aq05"]
 
-[ext_resource type="Script" uid="uid://uvjpl7l4u7jm" path="res://scripts/entities/feathers/feather_2.gd" id="1_ebsqe"]
-[ext_resource type="ArrayMesh" uid="uid://b6dnetib0kd44" path="res://assets/models/blender/Feather_Plane.res" id="2_ebsqe"]
-[ext_resource type="Texture2D" uid="uid://c6pjqumuaddqi" path="res://assets/textures/feather_2.png" id="3_ebsqe"]
+[ext_resource type="Script" uid="uid://mhwvlaskqe84" path="res://scripts/entities/feathers/feather_3.gd" id="1_prntl"]
+[ext_resource type="ArrayMesh" uid="uid://b6dnetib0kd44" path="res://assets/models/blender/Feather_Plane.res" id="2_j6qjh"]
+[ext_resource type="Texture2D" uid="uid://oaii1otludwt" path="res://assets/textures/feather_4.png" id="3_prntl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_osls0"]
 transparency = 1
-albedo_texture = ExtResource("3_ebsqe")
+albedo_texture = ExtResource("3_prntl")
 texture_filter = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yuobw"]
-size = Vector3(1.0200195, 0.20855713, 1.9895325)
+size = Vector3(0.4699707, 0.20855713, 1.9401321)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r22x5"]
 transparency = 1
 albedo_color = Color(0, 0, 0, 0.3137255)
-albedo_texture = ExtResource("3_ebsqe")
+albedo_texture = ExtResource("3_prntl")
 texture_filter = 0
 
 [node name="Feather0" type="Node3D" unique_id=278495074]
-script = ExtResource("1_ebsqe")
-fall_speed = 1.0
-min_speed = 0.5
-max_speed = 0.5
-rot_speed = 4.0
-tier = 2
+script = ExtResource("1_prntl")
 
 [node name="FeatherModel" type="MeshInstance3D" parent="." unique_id=797139545]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
-mesh = ExtResource("2_ebsqe")
+mesh = ExtResource("2_j6qjh")
 surface_material_override/0 = SubResource("StandardMaterial3D_osls0")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=953042261]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=115267628]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0021972656, 0.02670288, -0.00440979)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03869629, 0.02670288, -0.031414032)
 shape = SubResource("BoxShape3D_yuobw")
 
 [node name="Shadow" type="MeshInstance3D" parent="." unique_id=1219321539]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
-mesh = ExtResource("2_ebsqe")
+mesh = ExtResource("2_j6qjh")
 surface_material_override/0 = SubResource("StandardMaterial3D_r22x5")

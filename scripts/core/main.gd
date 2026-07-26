@@ -69,4 +69,3 @@ func _on_continue_pressed() -> void:
 	SoundManager.play_button_pop()
 	results_popup.hide()
 	Shop.open()
-

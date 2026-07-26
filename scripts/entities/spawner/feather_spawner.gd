@@ -20,12 +20,14 @@ var feather_types: Array = []
 ## Spawn weight for each entry in feather_types, in the same order. New feather
 ## types are only added to the active pool as the "Feather Sense" skill (id "2")
 ## is leveled up; see _get_active_weights().
-var feather_weights: Array[float] = [0.5, 0.3, 0.2]
+var feather_weights: Array[float] = [0.33, 0.27, 0.20, 0.13, 0.07]
 
 func _ready() -> void:
 	feather_types.append(load("res://scenes/entities/feather/feather_0.tscn"))
 	feather_types.append(load("res://scenes/entities/feather/feather_1.tscn"))
 	feather_types.append(load("res://scenes/entities/feather/feather_2.tscn"))
+	feather_types.append(load("res://scenes/entities/feather/feather_3.tscn"))
+	feather_types.append(load("res://scenes/entities/feather/feather_4.tscn"))
 
 	if feather_container == null:
 		feather_container = get_parent().get_node("Feathers") as Node3D
