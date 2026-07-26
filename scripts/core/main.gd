@@ -12,7 +12,7 @@ extends Node3D
 @onready var feathers_label: Label = %FeathersLabel
 @onready var continue_button: Button = %ContinueButton
 @onready var feather_spawner: Node = $featherSpawner
-@onready var duck: Node = $Duck
+@onready var duck: Node = $Player
 
 
 func _ready() -> void:

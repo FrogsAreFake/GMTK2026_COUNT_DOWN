@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bo3i667v4isti"]
+
+[ext_resource type="Shader" uid="uid://c0a4ht385jdwx" path="res://models/blender/Level/tree_shader.tres" id="1_wscyt"]
+[ext_resource type="Texture2D" uid="uid://x3iqy0cjgc5k" path="res://models/blender/Level/brush_4.png" id="2_wscyt"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_wscyt")
+shader_parameter/BaseTexture = ExtResource("2_wscyt")

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://begb4qt6vym8u"]
 
 [ext_resource type="Script" uid="uid://d1mmgoj73xe37" path="res://scripts/entities/feathers/feather_0.gd" id="1_0re23"]
-[ext_resource type="ArrayMesh" uid="uid://b6dnetib0kd44" path="res://assets/models/blender/Feather_Plane.res" id="2_osls0"]
+[ext_resource type="ArrayMesh" uid="uid://b6dnetib0kd44" path="res://assets/models/blender/Feather_Plane.res" id="2_houcv"]
 [ext_resource type="Texture2D" uid="uid://c3hxdfp5pmyv7" path="res://assets/textures/feather_5.png" id="3_houcv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_osls0"]
@@ -23,7 +23,7 @@ script = ExtResource("1_0re23")
 
 [node name="FeatherModel" type="MeshInstance3D" parent="." unique_id=797139545]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
-mesh = ExtResource("2_osls0")
+mesh = ExtResource("2_houcv")
 surface_material_override/0 = SubResource("StandardMaterial3D_osls0")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=953042261]
@@ -35,5 +35,5 @@ shape = SubResource("BoxShape3D_yuobw")
 
 [node name="Shadow" type="MeshInstance3D" parent="." unique_id=1219321539]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
-mesh = ExtResource("2_osls0")
+mesh = ExtResource("2_houcv")
 surface_material_override/0 = SubResource("StandardMaterial3D_r22x5")

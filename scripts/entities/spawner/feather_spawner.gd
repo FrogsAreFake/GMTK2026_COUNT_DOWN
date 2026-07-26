@@ -19,9 +19,9 @@ var rng = RandomNumberGenerator.new()
 var feather_types: Array = [] 
 
 func _ready() -> void:
-	feather_types.append(load("res://scenes/entities/feathers/feather_0.tscn"))
-	feather_types.append(load("res://scenes/entities/feathers/feather_1.tscn"))
-	feather_types.append(load("res://scenes/entities/feathers/feather_2.tscn"))
+	feather_types.append(load("res://scenes/entities/feather/feather_0.tscn"))
+	feather_types.append(load("res://scenes/entities/feather/feather_1.tscn"))
+	feather_types.append(load("res://scenes/entities/feather/feather_2.tscn"))
 
 	if feather_container == null:
 		feather_container = get_parent().get_node("Feathers") as Node3D
@@ -51,6 +51,8 @@ func spawn() -> void:
 	var box := spawner_shape.shape as BoxShape3D
 	if box == null:
 		return
+
+	print("feather spawned")
 
 	var half := box.size * 0.5
 	var local_pos := spawner_shape.transform * Vector3(
