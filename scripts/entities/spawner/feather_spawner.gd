@@ -15,8 +15,14 @@ extends Area3D
 
 var _spawn_timer: Timer
 
+var rng = RandomNumberGenerator.new()
+var feather_types: Array = [] 
 
 func _ready() -> void:
+	feather_types.append(load("res://scenes/entities/feather/feather_0.tscn"))
+	feather_types.append(load("res://scenes/entities/feather/feather_1.tscn"))
+	feather_types.append(load("res://scenes/entities/feather/feather_2.tscn"))
+
 	if feather_container == null:
 		feather_container = get_parent().get_node("Feathers") as Node3D
 
@@ -53,6 +59,10 @@ func spawn() -> void:
 		randf_range(-half.z, half.z)
 	)
 
-	var feather := feather_scene.instantiate() as Node3D
+	# var feather := feather_scene.instantiate() as Node3D
+	# var weights := PackedFloat32Array()
+	# weights.append_array([0.5, 0.3, 0.2])
+	var feather_index = rng.rand_weighted([0.5, 0.3, 0.2])
+	var feather := feather_types[feather_index].instantiate() as Node3D
 	feather_container.add_child(feather)
 	feather.global_position = to_global(local_pos)

@@ -1,7 +1,8 @@
 extends Node
 
+class_name Feather
+
 @export_group("Gameplay Settings")
-@export var speed: float = 0.01
 
 @export_group("Editor Settings")
 @export var fade_speed: float = 0.01
@@ -22,9 +23,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if(self.position.y > 0): # Feather falling
-		self.position.y -= speed
-	elif(active == true): # Feather missed, it touched the ground
+	if(active == true && self.position.y <= 0): # Feather missed, it touched the ground
 		active = false
 
 		# tmp to tell that a feather is no longer active
@@ -42,7 +41,7 @@ func _process(delta: float) -> void:
 	# Set shadow to follow the feather
 	shadow.global_position.x = self.global_position.x
 	shadow.global_position.z = self.global_position.z
-	shadow.global_position.y = 0
+	shadow.global_position.y = 0.05
 
 
 # Checking if feather is caught by the pillow
