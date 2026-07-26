@@ -41,6 +41,7 @@ func _process(delta: float) -> void:
 
 		var distance = self.global_position.distance_to(target)
 		var direction = (target - self.global_position).normalized()
+		self.rotation.y = -Vector2(direction.x, direction.z).angle() + PI/2
 
 		self.global_position += direction * (distance + 0.1) * speed
 		if(self.global_position.x > bounds_size - bound_offset):

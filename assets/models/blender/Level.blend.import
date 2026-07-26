@@ -40,6 +40,13 @@ materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
 _subresources={
+"materials": {
+"Material.001": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/models/blender/Level/tree_material.tres",
+"use_external/path": "uid://bo3i667v4isti"
+}
+},
 "meshes": {
 "Level_Cone": {
 "generate/lightmap_uv": 0,
@@ -58,6 +65,23 @@ _subresources={
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://level_plane.tres",
 "save_to_file/path": "uid://djpndvrj3ix0v"
+}
+},
+"nodes": {
+"PATH:BézierCurve5": {
+"import/skip_import": true
+},
+"PATH:Cylinder5": {
+"import/skip_import": true
+},
+"PATH:Leaves6": {
+"import/skip_import": true
+},
+"PATH:Leaves_0015": {
+"import/skip_import": true
+},
+"PATH:Trunk6": {
+"import/skip_import": true
 }
 }
 }

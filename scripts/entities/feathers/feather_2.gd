@@ -4,8 +4,9 @@ extends Feather
 
 @export var fall_speed: float = 0.01
 @export var float_range: float = 0.5
-@export var min_speed: float = 0.001
-@export var max_speed: float = 0.001
+@export var min_speed: float = 0.1
+@export var max_speed: float = 0.1
+@export var rot_speed: float = 8.0
 
 @onready var player = get_tree().get_first_node_in_group("player")
 
@@ -38,6 +39,6 @@ func _process(delta: float) -> void:
 		direction = self.position - player.position
 		direction.y = 0
 		direction = direction.normalized()
-		self.position += speed * direction
-		self.rotation.y += speed * 10 * rot_dir
-		self.position.y -= fall_speed
+		self.position += speed * direction * delta
+		self.rotation.y += speed * rot_speed * rot_dir * delta
+		self.position.y -= fall_speed * delta

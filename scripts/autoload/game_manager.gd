@@ -13,7 +13,7 @@ var money: int = 100
 ## Reset every run: how many feathers the player caught during the current round.
 var feathers_caught: int = 0
 ## Length, in seconds, of the main scene's countdown before the Overtime skill's bonus.
-var round_duration: float = 5.0
+var round_duration: float = 50.0
 ## Added to round_duration per level of the Overtime skill (id "5") purchased.
 var overtime_seconds_per_level: float = 3.0
 

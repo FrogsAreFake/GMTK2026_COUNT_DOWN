@@ -33,12 +33,12 @@ func _process(delta: float) -> void:
 
 	if(active == true):
 		# x += speed * d
-		x += speed
+		x += speed * delta
 		self.position += Vector3(
 			speed * sin(x / float_range),
 			0,
 			speed * cos(x / float_range) * rot_dir,
-		)
-		self.rotation.y += speed * rot_dir
-		self.position.y -= fall_speed
+		) * delta
+		self.rotation.y += speed * rot_dir * delta
+		self.position.y -= fall_speed * delta
 

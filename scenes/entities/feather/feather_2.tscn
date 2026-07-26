@@ -20,6 +20,10 @@ texture_filter = 0
 
 [node name="Feather0" type="Node3D" unique_id=278495074]
 script = ExtResource("1_ebsqe")
+fall_speed = 1.0
+min_speed = 1.0
+max_speed = 1.0
+rot_speed = 4.0
 
 [node name="FeatherModel" type="MeshInstance3D" parent="." unique_id=797139545]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
