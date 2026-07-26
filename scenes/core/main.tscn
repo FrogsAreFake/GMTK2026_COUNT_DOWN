@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://begb4qt6vym8u" path="res://scenes/entities/feather/feather_0.tscn" id="6_jvmw0"]
 [ext_resource type="Script" uid="uid://qk5rxxlasw30" path="res://scripts/core/main.gd" id="6_main"]
 [ext_resource type="ArrayMesh" uid="uid://deliyly72wb34" path="res://assets/models/blender/Level/tree.tres" id="7_phv0v"]
-[ext_resource type="Material" uid="uid://bo3i667v4isti" path="res://assets/models/blender/Level/tree_material.tres" id="8_jpx65"]
+[ext_resource type="ArrayMesh" uid="uid://dye4xpbocd2fc" path="res://level_plane.tres" id="8_phv0v"]
 [ext_resource type="Theme" uid="uid://b7m3ugtm43pqr" path="res://assets/ui/theme/game_theme.tres" id="8_theme"]
 
 [node name="Main" type="Node3D" unique_id=481238041]
@@ -131,6 +131,8 @@ spawner_size = 8.0
 [node name="Tree" type="MeshInstance3D" parent="." unique_id=1365424502]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.063, 0, 1.262)
 mesh = ExtResource("7_phv0v")
-surface_material_override/0 = ExtResource("8_jpx65")
+
+[node name="LevelPlane" type="MeshInstance3D" parent="." unique_id=1393236083]
+mesh = ExtResource("8_phv0v")
 
 [editable path="featherSpawner"]
