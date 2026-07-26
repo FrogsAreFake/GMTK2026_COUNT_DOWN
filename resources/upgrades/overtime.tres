@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SkillData" format=3 uid="uid://cc52x2iu3jst3"]
+
+[ext_resource type="Script" uid="uid://rw8b0sk0q1q8" path="res://scripts/ui/skill_tree/skill_data.gd" id="1_efgp8"]
+[ext_resource type="Texture2D" uid="uid://dhoxqv6phpocb" path="res://assets/ui/icons/skills/overtime.png" id="2_ovrtm"]
+
+[resource]
+script = ExtResource("1_efgp8")
+id = "5"
+display_name = "Overtime"
+description = "Work longer shifts for more pay."
+icon = ExtResource("2_ovrtm")
+grid_position = Vector2i(2, 0)
+prerequisite_ids = Array[String](["2"])
+metadata/_custom_type_script = "uid://rw8b0sk0q1q8"

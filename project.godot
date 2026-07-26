@@ -11,14 +11,25 @@ config_version=5
 [application]
 
 config/name="GMTK2026"
-run/main_scene="uid://cnh7fx4w6niwx"
+run/main_scene="res://scenes/ui/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*uid://sv2ry40bhum1"
+SkillTreeManager="*uid://bwailyn6lu1qu"
+SkillTreePanState="*uid://1c085u4pphj1"
+Shop="*res://scenes/environment/levels/shop.tscn"
 
 [display]
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[gui]
+
+theme/custom="uid://b7m3ugtm43pqr"
 
 [physics]
 

@@ -1,0 +1,49 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/entities/duck_funnel_2d/funnel_2d.gd" id="1_script"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_left"]
+points = PackedVector2Array(-138, -81, -117, -81, -21, 67.5, -42, 67.5)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_right"]
+points = PackedVector2Array(117, -81, 138, -81, 42, 67.5, 21, 67.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gate"]
+size = Vector2(42, 15)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_funnel"]
+friction = 0.0
+rough = true
+
+[node name="funnel" type="StaticBody2D"]
+collision_layer = 1
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_funnel")
+script = ExtResource("1_script")
+
+[node name="LeftSide" type="CollisionShape2D" parent="."]
+shape = SubResource("ConvexPolygonShape2D_left")
+
+[node name="RightSide" type="CollisionShape2D" parent="."]
+shape = SubResource("ConvexPolygonShape2D_right")
+
+[node name="Visual" type="Polygon2D" parent="."]
+color = Color(0.55, 0.55, 0.6, 1)
+polygon = PackedVector2Array(-138, -81, -117, -81, -21, 67.5, -42, 67.5)
+
+[node name="VisualRight" type="Polygon2D" parent="."]
+color = Color(0.55, 0.55, 0.6, 1)
+polygon = PackedVector2Array(117, -81, 138, -81, 42, 67.5, 21, 67.5)
+
+[node name="Gate" type="StaticBody2D" parent="."]
+position = Vector2(0, 75)
+collision_layer = 1
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_funnel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gate"]
+shape = SubResource("RectangleShape2D_gate")
+
+[node name="GateVisual" type="Polygon2D" parent="Gate"]
+color = Color(0.45, 0.3, 0.15, 1)
+polygon = PackedVector2Array(-21, -7.5, 21, -7.5, 21, 7.5, -21, 7.5)

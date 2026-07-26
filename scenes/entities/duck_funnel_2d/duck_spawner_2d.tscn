@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/entities/duck_funnel_2d/duck_spawner_2d.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://scenes/entities/duck_funnel_2d/duck_2d.tscn" id="2_duck"]
+
+[node name="DuckSpawner2D" type="Node2D"]
+script = ExtResource("1_script")
+duck_scene = ExtResource("2_duck")

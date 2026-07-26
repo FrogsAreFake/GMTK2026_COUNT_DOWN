@@ -19,9 +19,9 @@ var rng = RandomNumberGenerator.new()
 var feather_types: Array = [] 
 
 func _ready() -> void:
-	feather_types.append(load("res://scenes/entities/feather/feather_0.tscn"))
-	feather_types.append(load("res://scenes/entities/feather/feather_1.tscn"))
-	feather_types.append(load("res://scenes/entities/feather/feather_2.tscn"))
+	feather_types.append(load("res://scenes/entities/feathers/feather_0.tscn"))
+	feather_types.append(load("res://scenes/entities/feathers/feather_1.tscn"))
+	feather_types.append(load("res://scenes/entities/feathers/feather_2.tscn"))
 
 	if feather_container == null:
 		feather_container = get_parent().get_node("Feathers") as Node3D

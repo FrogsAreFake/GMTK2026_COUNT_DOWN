@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SkillData" format=3 uid="uid://bug64qcnslcib"]
+
+[ext_resource type="Texture2D" uid="uid://ca2bv65vg8r7u" path="res://assets/ui/icons/skills/speed.png" id="1_0wdmd"]
+[ext_resource type="Script" uid="uid://rw8b0sk0q1q8" path="res://scripts/ui/skill_tree/skill_data.gd" id="1_ifefp"]
+
+[resource]
+script = ExtResource("1_ifefp")
+id = "0"
+display_name = "Speed"
+description = "Waddle faster."
+icon = ExtResource("1_0wdmd")
+max_level = 5
+costs = Array[int]([100, 150, 250, 400, 600])
+metadata/_custom_type_script = "uid://rw8b0sk0q1q8"
