@@ -1,7 +1,8 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/entities/duck_funnel_2d/duck_2d.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://icon.svg" id="2_tex"]
+[ext_resource type="Texture2D" uid="uid://cets6ku0o3dpy" path="res://assets/textures/duck_1.png" id="2_duck1"]
+[ext_resource type="Texture2D" uid="uid://b4swogy0lhvw2" path="res://assets/textures/pillowcase_1.png" id="3_case1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_catcher"]
 size = Vector2(100, 170)
@@ -12,19 +13,18 @@ size = Vector2(63, 51)
 [node name="Duck" type="Node2D"]
 script = ExtResource("1_script")
 
-[node name="DuckSprite" type="Sprite2D" parent="."]
-modulate = Color(0.95, 0.85, 0.2, 1)
-scale = Vector2(0.135, 0.135)
-texture = ExtResource("2_tex")
+[node name="Visual" type="Node2D" parent="."]
+position = Vector2(201.75, -153.3)
+scale = Vector2(0.3, 0.3)
 
-[node name="Pillowcase" type="Sprite2D" parent="."]
-position = Vector2(0, -9)
-modulate = Color(0.9, 0.85, 0.7, 1)
-scale = Vector2(0.075, 0.075)
-texture = ExtResource("2_tex")
+[node name="Pillowcase" type="Sprite2D" parent="Visual"]
+texture = ExtResource("3_case1")
+
+[node name="DuckSprite" type="Sprite2D" parent="Visual"]
+texture = ExtResource("2_duck1")
 
 [node name="Catcher" type="Area2D" parent="."]
-position = Vector2(0, -9)
+position = Vector2(61.11, -9)
 collision_layer = 0
 collision_mask = 2
 monitorable = false
@@ -33,7 +33,7 @@ monitorable = false
 shape = SubResource("RectangleShape2D_catcher")
 
 [node name="PillowcaseCollider" type="Area2D" parent="."]
-position = Vector2(0, -9)
+position = Vector2(61.11, -9)
 collision_layer = 4
 collision_mask = 4
 

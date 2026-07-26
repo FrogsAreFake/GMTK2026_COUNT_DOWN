@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c3hxdfp5pmyv7" path="res://assets/textures/feather_5.png" id="2_tex"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_feather"]
-radius = 13.0
+radius = 6.0
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_feather"]
 friction = 0.0
@@ -13,7 +13,7 @@ rough = true
 [node name="Feather" type="RigidBody2D"]
 gravity_scale = 0.4
 collision_layer = 2
-collision_mask = 1
+collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_feather")
 linear_damp = 0.25
 angular_damp = 0.75

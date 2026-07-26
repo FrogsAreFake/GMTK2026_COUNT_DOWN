@@ -10,6 +10,7 @@ const GAMEPLAY_SCENE := "res://scenes/core/main.tscn"
 
 func _ready() -> void:
 	play_button.pressed.connect(_on_play_button_pressed)
+	SoundManager.play_menu_music()
 
 
 func _on_play_button_pressed() -> void:

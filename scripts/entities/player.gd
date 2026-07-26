@@ -3,7 +3,7 @@ extends Node
 @export var mouse_sensitivity = 0.005
 ## Base movement responsiveness before the Speed skill's bonus is applied.
 @export var base_speed = 0.01
-## Added to base_speed for every level of the Speed skill (id "0") purchased.
+## Added to base_speed for every level of the Fleet Feet skill (id "0") purchased.
 @export var speed_bonus_per_level = 0.003
 @export var bounds_size = 2
 

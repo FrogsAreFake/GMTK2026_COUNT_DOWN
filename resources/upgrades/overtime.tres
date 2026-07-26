@@ -7,8 +7,10 @@
 script = ExtResource("1_efgp8")
 id = "5"
 display_name = "Overtime"
-description = "Work longer shifts for more pay."
+description = "Stay on the clock a little longer each round for extra catching time — and extra pay."
 icon = ExtResource("2_ovrtm")
 grid_position = Vector2i(2, 0)
 prerequisite_ids = Array[String](["2"])
+max_level = 3
+costs = Array[int]([150, 320, 550])
 metadata/_custom_type_script = "uid://rw8b0sk0q1q8"

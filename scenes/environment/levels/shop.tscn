@@ -7,9 +7,7 @@
 [ext_resource type="Script" path="res://scripts/environment/levels/shop.gd" id="5_shop_script"]
 [ext_resource type="PackedScene" uid="uid://cxjj1acdigr8a" path="res://scenes/ui/skill_tree/skill_tree_view.tscn" id="6_skill_tree"]
 [ext_resource type="Theme" uid="uid://b7m3ugtm43pqr" path="res://assets/ui/theme/game_theme.tres" id="7_theme"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
-size = Vector2(1200, 20)
+[ext_resource type="Texture2D" uid="uid://dnlty83x5gecb" path="res://assets/textures/shop_background.png" id="8_background"]
 
 [node name="Shop" type="Node2D"]
 script = ExtResource("5_shop_script")
@@ -18,34 +16,21 @@ script = ExtResource("5_shop_script")
 layer = 5
 visible = false
 
-[node name="Sky" type="ColorRect" parent="World"]
+[node name="Background" type="TextureRect" parent="World"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.62, 0.78, 0.9, 1)
-
-[node name="Ground" type="StaticBody2D" parent="World"]
-position = Vector2(576, 610)
-collision_layer = 1
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Ground"]
-shape = SubResource("RectangleShape2D_ground")
-
-[node name="GroundVisual" type="ColorRect" parent="World/Ground"]
-offset_left = -600.0
-offset_top = -10.0
-offset_right = 600.0
-offset_bottom = 10.0
-color = Color(0.45, 0.33, 0.2, 1)
+texture = ExtResource("8_background")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="Funnel" parent="World" instance=ExtResource("1_funnel")]
-position = Vector2(576, 250)
+position = Vector2(921.6, 81)
 
 [node name="DuckStopMarker" type="Marker2D" parent="World"]
-position = Vector2(576, 520)
+position = Vector2(860.49, 520)
 
 [node name="Ducks" type="Node2D" parent="World"]
 
@@ -58,7 +43,7 @@ duck_stop_marker_path = NodePath("../DuckStopMarker")
 funnel_path = NodePath("../Funnel")
 
 [node name="InitialFeatherSpawner" type="Node2D" parent="World"]
-position = Vector2(576, 150)
+position = Vector2(921.6, -19)
 script = ExtResource("4_feather_spawner_script")
 feather_scene = ExtResource("3_feather")
 feather_container_path = NodePath("../Feathers")
@@ -96,6 +81,38 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Feathers this run: 0"
+
+[node name="VolumePanel" type="PanelContainer" parent="UI"]
+layout_mode = 1
+theme = ExtResource("7_theme")
+offset_left = 276.0
+offset_top = 16.0
+offset_right = 476.0
+offset_bottom = 76.0
+
+[node name="VolumeMargin" type="MarginContainer" parent="UI/VolumePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="VolumeVBox" type="VBoxContainer" parent="UI/VolumePanel/VolumeMargin"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="VolumeLabel" type="Label" parent="UI/VolumePanel/VolumeMargin/VolumeVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Volume"
+
+[node name="VolumeSlider" type="HSlider" parent="UI/VolumePanel/VolumeMargin/VolumeVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 0.5
 
 [node name="BottomBar" type="HBoxContainer" parent="UI"]
 layout_mode = 1

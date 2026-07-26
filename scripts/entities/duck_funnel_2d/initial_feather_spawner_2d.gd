@@ -2,8 +2,8 @@ extends Node2D
 
 ## Spawns feathers above the funnel. They fall under gravity, slide down the
 ## funnel's side walls, and come to rest on the closed gate until a duck
-## arrives. The shop calls `spawn_feathers()` in real time as feathers are
-## caught in the main scene (the shop runs continuously in the background).
+## arrives. The shop calls `spawn_feathers()` once per run, as a batch, when
+## the player returns to the shop after a round ends.
 
 @export var feather_scene: PackedScene
 @export var spawn_area_width: float = 90.0
@@ -41,4 +41,7 @@ func spawn_feathers(counts_by_tier: Dictionary) -> void:
 				randf_range(-spawn_area_width * 0.5, spawn_area_width * 0.5),
 				-randf_range(0.0, spawn_height_variance) - i * vertical_spacing
 			)
+			feather.rotation = randf_range(0.0, TAU)
+			if feather.has_method("set_respawn_origin"):
+				feather.call("set_respawn_origin", global_position)
 			i += 1

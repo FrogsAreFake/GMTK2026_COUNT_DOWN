@@ -7,10 +7,10 @@
 script = ExtResource("1_3055t")
 id = "3"
 display_name = "Discount"
-description = "Skills cost less to unlock."
+description = "Haggle your way to better prices — every skill in the tree costs less."
 icon = ExtResource("2_dscnt")
 grid_position = Vector2i(-1, 0)
 prerequisite_ids = Array[String](["0"])
-max_level = 3
-costs = Array[int]([100, 200, 350])
+max_level = 4
+costs = Array[int]([90, 160, 260, 400])
 metadata/_custom_type_script = "uid://rw8b0sk0q1q8"

@@ -28,14 +28,28 @@ visible = false
 [node name="HUD" type="CanvasLayer" parent="." unique_id=214153635]
 
 [node name="TimerPanel" type="PanelContainer" parent="HUD" unique_id=354833423]
+[node name="TimerPanel" type="PanelContainer" parent="HUD" unique_id=354833423]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -80.0
+offset_left = -80.0
 offset_top = 16.0
 offset_right = -16.0
 offset_bottom = 84.0
+offset_bottom = 84.0
 grow_horizontal = 0
+theme = ExtResource("8_theme")
+
+[node name="TimerMargin" type="MarginContainer" parent="HUD/TimerPanel" unique_id=354833425]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 4
+
+[node name="TimerLabel" type="Label" parent="HUD/TimerPanel/TimerMargin" unique_id=354833424]
+layout_mode = 2
 theme = ExtResource("8_theme")
 
 [node name="TimerMargin" type="MarginContainer" parent="HUD/TimerPanel" unique_id=354833425]
@@ -123,6 +137,37 @@ layout_mode = 2
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 22
 text = "x0"
+
+[node name="VolumePanel" type="PanelContainer" parent="HUD" unique_id=354833450]
+offset_left = 192.0
+offset_top = 16.0
+offset_right = 392.0
+offset_bottom = 76.0
+theme = ExtResource("8_theme")
+
+[node name="VolumeMargin" type="MarginContainer" parent="HUD/VolumePanel" unique_id=354833451]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="VolumeVBox" type="VBoxContainer" parent="HUD/VolumePanel/VolumeMargin" unique_id=354833452]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="VolumeLabel" type="Label" parent="HUD/VolumePanel/VolumeMargin/VolumeVBox" unique_id=354833453]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Volume"
+
+[node name="VolumeSlider" type="HSlider" parent="HUD/VolumePanel/VolumeMargin/VolumeVBox" unique_id=354833454]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 0.5
 
 [node name="ResultsPopup" type="Control" parent="HUD" unique_id=1893175133]
 layout_mode = 3

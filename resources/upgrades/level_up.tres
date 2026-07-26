@@ -6,10 +6,10 @@
 [resource]
 script = ExtResource("1_hmxnb")
 id = "2"
-display_name = "Level Up"
-description = "Unlocks new kinds of feathers to blow into your pillowcases."
+display_name = "Feather Sense"
+description = "Learn to spot rarer feathers drifting down so you can catch — and later sell — them too."
 icon = ExtResource("1_s1nwx")
 grid_position = Vector2i(1, 0)
 max_level = 2
-costs = Array[int]([150, 300])
+costs = Array[int]([120, 280])
 metadata/_custom_type_script = "uid://rw8b0sk0q1q8"

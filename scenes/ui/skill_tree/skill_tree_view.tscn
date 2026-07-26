@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://rw8b0sk0q1q8" path="res://scripts/ui/skill_tree/skill_data.gd" id="3_nbo01"]
 [ext_resource type="Resource" uid="uid://oj6mwf85l03u" path="res://resources/upgrades/level_up.tres" id="4_2nuj6"]
 [ext_resource type="Resource" uid="uid://bn3e7jl55bjfp" path="res://resources/upgrades/discount.tres" id="6_2q888"]
-[ext_resource type="Resource" uid="uid://cg44isxwfm701" path="res://resources/upgrades/firmer_pillows.tres" id="7_gtuid"]
+[ext_resource type="Resource" uid="uid://cg44isxwfm701" path="res://resources/upgrades/pillow_density.tres" id="7_gtuid"]
 [ext_resource type="Resource" uid="uid://cc52x2iu3jst3" path="res://resources/upgrades/overtime.tres" id="9_grhs0"]
 [ext_resource type="Resource" uid="uid://bug64qcnslcib" path="res://resources/upgrades/speed.tres" id="10_up43e"]
 

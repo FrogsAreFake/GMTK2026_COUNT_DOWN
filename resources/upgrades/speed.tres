@@ -6,9 +6,10 @@
 [resource]
 script = ExtResource("1_ifefp")
 id = "0"
-display_name = "Speed"
-description = "Waddle faster."
+display_name = "Fleet Feet"
+description = "Waddle faster to reach falling feathers before they hit the ground."
 icon = ExtResource("1_0wdmd")
+grid_position = Vector2i(0, 0)
 max_level = 5
-costs = Array[int]([100, 150, 250, 400, 600])
+costs = Array[int]([80, 140, 220, 330, 480])
 metadata/_custom_type_script = "uid://rw8b0sk0q1q8"

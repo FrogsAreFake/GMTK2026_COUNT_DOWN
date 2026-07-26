@@ -16,6 +16,7 @@ extends Node3D
 @onready var tier0_count_label: Label = %Tier0CountLabel
 @onready var tier1_count_label: Label = %Tier1CountLabel
 @onready var tier2_count_label: Label = %Tier2CountLabel
+@onready var volume_slider: HSlider = %VolumeSlider
 
 
 func _ready() -> void:
@@ -28,6 +29,10 @@ func _ready() -> void:
 	_update_timer_label(round_timer.wait_time)
 	GameManager.feathers_by_type_changed.connect(_on_feathers_by_type_changed)
 	_update_feather_info_panel(GameManager.feathers_by_type)
+	SoundManager.play_game_music()
+	volume_slider.value = SoundManager.volume
+	volume_slider.value_changed.connect(SoundManager.set_volume)
+	SoundManager.volume_changed.connect(volume_slider.set_value_no_signal)
 
 
 func _process(_delta: float) -> void:

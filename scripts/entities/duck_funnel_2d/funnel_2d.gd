@@ -11,13 +11,18 @@ signal gate_closed
 
 @onready var gate_collision: CollisionShape2D = $Gate/CollisionShape2D
 @onready var gate_visual: Polygon2D = $Gate/GateVisual
+@onready var release_sensor: Area2D = $ReleaseSensor
 
 var is_open: bool = false
 var _current_duck: Node = null
+## How many feathers have passed the release sensor for the current duck's
+## turn. Reset each time a new duck starts being fed.
+var _released_count: int = 0
 
 
 func _ready() -> void:
 	_set_gate_open(false)
+	release_sensor.body_entered.connect(_on_release_sensor_body_entered)
 
 
 ## Called by a duck once it stops under the funnel. Only one duck is fed at
@@ -26,6 +31,7 @@ func request_feed(duck: Node) -> void:
 	if _current_duck != null:
 		return
 	_current_duck = duck
+	_released_count = 0
 	_set_gate_open(true)
 
 
@@ -55,3 +61,18 @@ func _wake_resting_feathers() -> void:
 	for feather in get_tree().get_nodes_in_group("feather"):
 		if feather is RigidBody2D:
 			feather.sleeping = false
+
+
+## Counts feathers that fall past the gate while it's open. Only a single
+## pillowcase's worth of feathers should ever be released before the gate
+## shuts again, even if the duck hasn't physically caught them all yet.
+func _on_release_sensor_body_entered(body: Node) -> void:
+	if not is_open or _current_duck == null:
+		return
+	if not body.is_in_group("feather"):
+		return
+
+	_released_count += 1
+	var capacity: int = _current_duck.get("pillowcase_capacity")
+	if capacity > 0 and _released_count >= capacity:
+		_set_gate_open(false)

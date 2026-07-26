@@ -6,11 +6,11 @@
 [resource]
 script = ExtResource("1_anvyp")
 id = "4"
-display_name = "Firmer Pillows"
-description = "Pillows hold more feathers before they're full."
+display_name = "Pillow Density"
+description = "Pack the stuffing tighter: each pillowcase holds more feathers before it's full, and a denser pillow always fetches a better price."
 icon = ExtResource("1_vdyuo")
 grid_position = Vector2i(0, 1)
 prerequisite_ids = Array[String](["0"])
 max_level = 5
-costs = Array[int]([100, 150, 250, 400, 600])
+costs = Array[int]([120, 200, 320, 480, 700])
 metadata/_custom_type_script = "uid://rw8b0sk0q1q8"

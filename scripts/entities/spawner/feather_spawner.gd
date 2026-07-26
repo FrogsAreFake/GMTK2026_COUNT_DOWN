@@ -18,7 +18,7 @@ var _spawn_timer: Timer
 var rng = RandomNumberGenerator.new()
 var feather_types: Array = [] 
 ## Spawn weight for each entry in feather_types, in the same order. New feather
-## types are only added to the active pool as the "Level Up" skill (id "2")
+## types are only added to the active pool as the "Feather Sense" skill (id "2")
 ## is leveled up; see _get_active_weights().
 var feather_weights: Array[float] = [0.5, 0.3, 0.2]
 
@@ -74,7 +74,7 @@ func spawn() -> void:
 	feather.global_position = to_global(local_pos)
 
 
-## Only feather types unlocked so far by the "Level Up" skill (id "2") can be
+## Only feather types unlocked so far by the "Feather Sense" skill (id "2") can be
 ## spawned. Level 0 -> just feather_types[0], level 1 -> feather_types[0..1],
 ## etc. Returns their weights, sliced from feather_weights in the same order.
 func _get_active_weights() -> Array[float]:

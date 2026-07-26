@@ -1,6 +1,7 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/entities/duck_funnel_2d/funnel_2d.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://ch4utb5tx06se" path="res://assets/textures/funnel.png" id="2_funnel_tex"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_left"]
 points = PackedVector2Array(-91, -81, -70, -81, -21, 67.5, -42, 67.5)
@@ -11,6 +12,9 @@ points = PackedVector2Array(70, -81, 91, -81, 42, 67.5, 21, 67.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gate"]
 size = Vector2(42, 15)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_release_sensor"]
+size = Vector2(50, 20)
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_funnel"]
 friction = 0.0
 rough = true
@@ -18,6 +22,7 @@ rough = true
 [node name="funnel" type="StaticBody2D"]
 collision_layer = 1
 collision_mask = 0
+z_index = 5
 physics_material_override = SubResource("PhysicsMaterial_funnel")
 script = ExtResource("1_script")
 
@@ -27,18 +32,16 @@ shape = SubResource("ConvexPolygonShape2D_left")
 [node name="RightSide" type="CollisionShape2D" parent="."]
 shape = SubResource("ConvexPolygonShape2D_right")
 
-[node name="Visual" type="Polygon2D" parent="."]
-color = Color(0.55, 0.55, 0.6, 1)
-polygon = PackedVector2Array(-91, -81, -70, -81, -21, 67.5, -42, 67.5)
-
-[node name="VisualRight" type="Polygon2D" parent="."]
-color = Color(0.55, 0.55, 0.6, 1)
-polygon = PackedVector2Array(70, -81, 91, -81, 42, 67.5, 21, 67.5)
+[node name="FunnelSprite" type="Sprite2D" parent="."]
+position = Vector2(-186.736, 238.2)
+scale = Vector2(0.417288, 0.591111)
+texture = ExtResource("2_funnel_tex")
 
 [node name="Gate" type="StaticBody2D" parent="."]
 position = Vector2(0, 75)
 collision_layer = 1
 collision_mask = 0
+z_index = -1
 physics_material_override = SubResource("PhysicsMaterial_funnel")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gate"]
@@ -47,3 +50,12 @@ shape = SubResource("RectangleShape2D_gate")
 [node name="GateVisual" type="Polygon2D" parent="Gate"]
 color = Color(0.45, 0.3, 0.15, 1)
 polygon = PackedVector2Array(-21, -7.5, 21, -7.5, 21, 7.5, -21, 7.5)
+
+[node name="ReleaseSensor" type="Area2D" parent="."]
+position = Vector2(0, 95)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReleaseSensor"]
+shape = SubResource("RectangleShape2D_release_sensor")

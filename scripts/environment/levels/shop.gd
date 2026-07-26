@@ -17,6 +17,7 @@ extends Node2D
 @onready var play_again_button: Button = $UI/BottomBar/PlayAgainButton
 @onready var upgrades_popup: Control = $UI/UpgradesPopup
 @onready var close_button: Button = $UI/UpgradesPopup/CloseButton
+@onready var volume_slider: HSlider = %VolumeSlider
 
 
 func _ready() -> void:
@@ -27,6 +28,9 @@ func _ready() -> void:
 	upgrades_button.pressed.connect(_on_upgrades_pressed)
 	close_button.pressed.connect(_on_close_pressed)
 	play_again_button.pressed.connect(_on_play_again_pressed)
+	volume_slider.value = SoundManager.volume
+	volume_slider.value_changed.connect(SoundManager.set_volume)
+	SoundManager.volume_changed.connect(volume_slider.set_value_no_signal)
 
 	GameManager.money_changed.connect(_on_money_changed)
 	GameManager.feathers_caught_changed.connect(_on_feathers_caught_changed)
@@ -41,6 +45,7 @@ func open() -> void:
 	initial_feather_spawner.spawn_feathers(GameManager.feathers_by_type)
 	world.visible = true
 	ui.visible = true
+	SoundManager.play_menu_music()
 
 
 ## Hides the shop's visuals/UI again. The duck/funnel simulation keeps
