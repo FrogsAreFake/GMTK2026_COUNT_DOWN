@@ -48,4 +48,5 @@ func _process(delta: float) -> void:
 func _on_area_entered(area: Area3D):
 	if(area.name == "PillowCollider" && self.active == true):
 		GameManager.catch_feather()
+		SoundManager.play_coin()
 		queue_free()

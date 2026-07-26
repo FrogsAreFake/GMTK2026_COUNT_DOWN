@@ -69,6 +69,7 @@ func _gui_input(event: InputEvent) -> void:
 		else:
 			# Only treat this as a purchase click if the mouse never left drag threshold.
 			if not SkillTreePanState.moved_beyond_threshold:
+				SoundManager.play_button_pop()
 				purchase_attempted.emit(skill_data)
 			SkillTreePanState.end_press()
 	elif event is InputEventMouseMotion:
